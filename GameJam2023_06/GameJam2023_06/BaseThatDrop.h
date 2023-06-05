@@ -1,0 +1,23 @@
+#pragma once
+#include "Collider/SphereCollider.h"
+#include "common.h"
+
+class BaseThatDrop:
+	public SphereCollider
+{
+	/*
+	* ColliderBase:
+	*	E_Collider colliderType;
+	*	Location location;	//íÜêSç¿ïW
+	* SphereCollider:
+	* 	float radius;			//îºåa
+	*/
+public:
+	BaseThatDrop();
+	~BaseThatDrop();
+	BaseThatDrop(Location location,float radius);
+
+private:
+	float speed;
+};
+

@@ -25,6 +25,12 @@
     <Filter Include="ヘッダー ファイル\System">
       <UniqueIdentifier>{cd65db79-b5da-4e54-9090-78d462e72ec7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Collider">
+      <UniqueIdentifier>{605bd1c0-5284-43da-aade-c01eaa4e6fe7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Collider">
+      <UniqueIdentifier>{22a0bff8-2108-446b-a23b-2553fe25a303}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,6 +54,24 @@
     <ClCompile Include="SceneManager\Scene\GameMain.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Collider\ColliderBase.cpp">
+      <Filter>ソース ファイル\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider\BoxCollider.cpp">
+      <Filter>ソース ファイル\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider\LineCollider.cpp">
+      <Filter>ソース ファイル\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider\SphereCollider.cpp">
+      <Filter>ソース ファイル\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Dropper.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseThatDrop.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -70,6 +94,33 @@
     </ClInclude>
     <ClInclude Include="SceneManager\Scene\GameMain.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Location.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider\ColliderBase.h">
+      <Filter>ヘッダー ファイル\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider\E_Collider.h">
+      <Filter>ヘッダー ファイル\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider\BoxCollider.h">
+      <Filter>ヘッダー ファイル\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Area.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider\LineCollider.h">
+      <Filter>ヘッダー ファイル\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider\SphereCollider.h">
+      <Filter>ヘッダー ファイル\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Dropper.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseThatDrop.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
