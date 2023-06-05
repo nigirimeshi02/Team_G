@@ -4,7 +4,11 @@
 class SphereCollider :public ColliderBase
 {
 protected:
-
+/*
+* ColliderBase:
+*	E_Collider colliderType;
+*	Location location;	//’†SÀ•W
+*/
 	float radius;			//”¼Œa
 public:
 
