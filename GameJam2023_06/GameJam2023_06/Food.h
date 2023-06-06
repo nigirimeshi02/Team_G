@@ -1,15 +1,17 @@
 #pragma once
 #include "ObstacleBase.h"
-class Food:
-    public ObstacleBase
+
+class Food :
+	public ObstacleBase
 {
 public:
-    Food();
-    ~Food();
-    Food(Location location, float radius);
+	Food(Location location = { 100,0 }, float radius = 10.0f, float speed = 2, int score = 100);
+	~Food();
+
+private:
+	static int image;
 
 public:
-    virtual void Update() = 0;
-    virtual void Draw()const = 0;
-
+	void Update();
+	void Draw()const;
 };

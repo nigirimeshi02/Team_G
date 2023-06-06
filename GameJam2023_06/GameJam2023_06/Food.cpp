@@ -1,15 +1,18 @@
+#include "DxLib.h"
 #include "Food.h"
 
+int Food::image = 0;
 
 /*
-* デフォルトコンストラクタ
+* コンストラクタ
 */
-Food::Food()
+Food::Food(Location location, float radius, float speed, int score)
+	:ObstacleBase(location, radius, speed, score)
 {
-
-
-
-
+	if (image == 0)
+	{
+		image = LoadGraph("Images/banana.png");
+	}
 }
 
 /*
@@ -18,19 +21,30 @@ Food::Food()
 Food::~Food()
 {
 
-
 }
 
 /*
-* 引数付きコンストラクタ
+* 更新
 */
-Food::Food(Location location, float radius = 5)
-	:ObstacleBase(location, radius)
+void Food::Update()
 {
-
-
-
-
-	speed = 0;
-	isBroken = false;
+	location.y += speed;
 }
+
+/*
+* 描画
+*/
+void Food::Draw()const
+{
+	DrawRotaGraphF(location.x, location.y, 1.0, 0, image, TRUE);
+}
+
+/*
+*
+*/
+
+
+/*
+*
+*/
+
