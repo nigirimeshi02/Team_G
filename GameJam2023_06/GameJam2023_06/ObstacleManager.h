@@ -1,5 +1,5 @@
 #pragma once
-class Dropper
+class ObstacleManager
 {
 public:
 
