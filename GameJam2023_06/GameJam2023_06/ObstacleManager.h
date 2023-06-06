@@ -1,10 +1,24 @@
 #pragma once
 #include "ObstacleBase.h"
-#define D_OBSTACLES_MAX (30)
+#include "Food.h"
+
+#include <vector>
+
+using namespace std;
+
 class ObstacleManager
 {
 public:
-	ObstacleBase* obstacles;
+	ObstacleManager();
+	~ObstacleManager();
+
+	void Update();
+	void Draw()const;
+
+private:
+	vector<ObstacleBase*> obstacles;
+	int frameCount;
+
 
 };
 

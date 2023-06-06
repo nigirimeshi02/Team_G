@@ -6,7 +6,7 @@
 */
 GameMain::GameMain()
 {
-
+	obstacleManager = new ObstacleManager();
 }
 
 /*
@@ -14,7 +14,7 @@ GameMain::GameMain()
 */
 GameMain::~GameMain()
 {
-
+	delete obstacleManager;
 }
 
 /*
@@ -23,6 +23,8 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
+	obstacleManager->Update();
+
 	return this;
 }
 
@@ -31,5 +33,7 @@ AbstractScene* GameMain::Update()
 */
 void GameMain::Draw()const
 {
+	obstacleManager->Draw();
+
 	DrawFormatString(0, 0, 0xffffff, "test");
 }
