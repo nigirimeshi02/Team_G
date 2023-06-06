@@ -1,5 +1,6 @@
-#include "Enemy.h"
 #include"DxLib.h"
+#include "Enemy.h"
+
 
 /*
 * デフォルトコンストラクタ
@@ -35,9 +36,20 @@ Enemy::Enemy(Location location, float radius = 5)
 	isBroken = false;
 }
 
-void Enemy:: Update() {
+void Enemy::Update() {
+	// ゲームループ
+	while ((ProcessMessage() == 0) &&
+		sceneManager->Update() != nullptr
+		)
+	{
+		ClearDrawScreen();		// 画面の初期化
 
+		sceneManager->Draw();
+
+		ScreenFlip();
+	}
 }
+
 
 void Enemy::Draw()const {
 	
