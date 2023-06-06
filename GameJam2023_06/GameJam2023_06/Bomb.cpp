@@ -1,24 +1,24 @@
-#include"DxLib.h"
-#include "Enemy.h"
+#include "DxLib.h"
+#include "Bomb.h"
 
-int Enemy::image = 0;
+int Bomb::image = 0;
 
 /*
 * コンストラクタ
 */
-Enemy::Enemy(Location location, float radius, float speed, int score)
+Bomb::Bomb(Location location, float radius, float speed, int score)
 	:ObstacleBase(location, radius, speed, score)
 {
 	if (image == 0)
 	{
-		image = LoadGraph("Images/enemy.png");
+		image = LoadGraph("Images/bomb.png");
 	}
 }
 
 /*
 * デストラクタ
 */
-Enemy::~Enemy()
+Bomb::~Bomb()
 {
 
 }
@@ -26,7 +26,7 @@ Enemy::~Enemy()
 /*
 * 更新
 */
-void Enemy::Update()
+void Bomb::Update()
 {
 	location.y += speed;
 }
@@ -34,7 +34,7 @@ void Enemy::Update()
 /*
 * 描画
 */
-void Enemy::Draw()const
+void Bomb::Draw()const
 {
 	DrawRotaGraphF(location.x, location.y, 1.0, 0, image, TRUE);
 }
@@ -47,6 +47,4 @@ void Enemy::Draw()const
 /*
 *
 */
-
-
 
