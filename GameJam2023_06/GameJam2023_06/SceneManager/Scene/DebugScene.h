@@ -1,4 +1,6 @@
 #include "../AbstractScene.h"
+#include "../../attack.h"
+#include "../../Collider/BoxCollider.h"
 #pragma once
 class DebugScene:
 	public AbstractScene
@@ -14,6 +16,7 @@ public:
 	void Draw() const override;
 
 private:
-
+	Attack* attack;
+	BoxCollider* box;
 };
 

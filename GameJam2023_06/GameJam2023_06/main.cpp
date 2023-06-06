@@ -27,7 +27,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする
 
 	SoundPlayer::GetInstance();										//サウンドプレイヤーの起動
-	AbstractScene* firstScene = new GameMain();						//FirstSceneの作成
+	AbstractScene* firstScene = new DebugScene();						//FirstSceneの作成
 	SceneManager* sceneManager = SceneManager::Create(firstScene);	//シーンマネージャーの起動
 
 	// ゲームループ
