@@ -142,6 +142,7 @@
     <ClCompile Include="Collider\BoxCollider.cpp" />
     <ClCompile Include="Collider\ColliderBase.cpp" />
     <ClCompile Include="Collider\LineCollider.cpp" />
+    <ClCompile Include="Food.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
     <ClCompile Include="System\PadInput\PadInput.cpp" />
     <ClCompile Include="SceneManager\Scene\GameMain.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="common.h" />
     <ClInclude Include="Collider\E_Collider.h" />
     <ClInclude Include="Collider\LineCollider.h" />
+    <ClInclude Include="Food.h" />
     <ClInclude Include="ObstacleManager.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="System\PadInput\PadInput.h" />

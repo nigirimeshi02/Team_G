@@ -5,7 +5,9 @@
 */
 ObstacleBase::ObstacleBase()
 {
-
+	location = { 100,0 };
+	score = 100;
+	isBroken = false;
 }
 
 /*
@@ -19,9 +21,10 @@ ObstacleBase::~ObstacleBase()
 /*
 * 引数付きコンストラクタ
 */
-ObstacleBase::ObstacleBase(Location location, float radius = 5)
+ObstacleBase::ObstacleBase(Location location, float radius = 5, float speed = 2, int score = 100)
 	:SphereCollider(location, radius)
 {
-	speed = 0;
+	this->speed = speed;
+	this->score = score;
 	isBroken = false;
 }
