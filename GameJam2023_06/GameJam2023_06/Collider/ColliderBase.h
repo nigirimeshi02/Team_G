@@ -35,11 +35,6 @@ protected:
 
 public:
 
-	ColliderBase(Location location = { 100,100 })
-	{
-		this->location = location;
-	}
-
 	//’†SÀ•W‚Ìæ“¾
 	Location GetLocation()const
 	{
