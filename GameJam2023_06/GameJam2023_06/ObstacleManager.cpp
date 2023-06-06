@@ -1,3 +1,4 @@
+#include "DxLib.h"
 #include "ObstacleManager.h"
 
 /*
@@ -50,9 +51,15 @@ void ObstacleManager::Draw()const
 }
 
 /*
-* 
+* áŠQ•¨‚Ì¶¬
+* ’Š‘I‚©‚ç‚â‚é
 */
+void ObstacleManager::CreateObstacle(int ratio_enemy, int ratio_bomb, int ratio_food)
+{
+	int rand = GetRand(9) + 1;	//1`10‚Ì10ŒÂ‚Ì”š‚ğæ“¾
 
+	if(rand<=ratio_enemy)
+}
 
 /*
 * 
