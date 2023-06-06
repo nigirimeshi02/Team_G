@@ -23,8 +23,7 @@ SlashAction::SlashAction(Location location, float radius)
 }
 
 void SlashAction::Update()
-{
-	drawLocation.x++;
+{	
 	//location.x += (D_ATTACK_RANGE * 2) / (M_PI / D_ATTACK_SPEED);
 	angle += D_ATTACK_SPEED;
 	location.x = drawLocation.x - cosf(angle) * D_ATTACK_RANGE;
