@@ -143,6 +143,7 @@
     <ClCompile Include="Collider\ColliderBase.cpp" />
     <ClCompile Include="Collider\LineCollider.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
+    <ClCompile Include="System\PadInput\PadInput.cpp" />
     <ClCompile Include="SceneManager\Scene\GameMain.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneManager\AbstractScene.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Collider\LineCollider.h" />
     <ClInclude Include="ObstacleManager.h" />
     <ClInclude Include="Location.h" />
+    <ClInclude Include="System\PadInput\PadInput.h" />
     <ClInclude Include="SceneManager\Scene\GameMain.h" />
     <ClInclude Include="SceneManager\AbstractScene.h" />
     <ClInclude Include="SceneManager\SceneManager.h" />
