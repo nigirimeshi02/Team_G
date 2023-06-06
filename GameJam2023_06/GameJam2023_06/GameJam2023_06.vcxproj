@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="attack_judgment.cpp" />
     <ClCompile Include="SceneManager\Scene\GameMain.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneManager\AbstractScene.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="System\SoundPlayer\SoundPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="attack_judgment.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="SceneManager\Scene\GameMain.h" />
     <ClInclude Include="SceneManager\AbstractScene.h" />
