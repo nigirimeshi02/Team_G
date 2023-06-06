@@ -3,6 +3,19 @@
 class Title :
 	public AbstractScene
 {
+
+private:
+	enum class TITLE_MENU {
+		START,
+		RANKING,
+		END
+	};
+
+	TITLE_MENU Menu_Number;
+
+	int interval;
+	int select;
+	short JoyPadY;
 public:
 
 	Title();
@@ -13,7 +26,7 @@ public:
 	//•`‰æ‚ÉŠÖ‚·‚é‚±‚Æ‚ðŽÀ‘•
 	void Draw() const override;
 
-private:
+
 
 
 };
