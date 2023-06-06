@@ -5,6 +5,9 @@
 */
 ObstacleBase::ObstacleBase()
 {
+	
+	
+
 
 }
 
@@ -13,7 +16,8 @@ ObstacleBase::ObstacleBase()
 */
 ObstacleBase::~ObstacleBase()
 {
-
+	
+			
 }
 
 /*
@@ -22,6 +26,10 @@ ObstacleBase::~ObstacleBase()
 ObstacleBase::ObstacleBase(Location location, float radius = 5)
 	:SphereCollider(location, radius)
 {
+	
+
+
+			
 	speed = 0;
 	isBroken = false;
 }

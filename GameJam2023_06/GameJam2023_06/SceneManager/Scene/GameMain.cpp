@@ -6,7 +6,7 @@
 */
 GameMain::GameMain()
 {
-
+	enemy = new Enemy({100,100},10);
 }
 
 /*
@@ -14,7 +14,7 @@ GameMain::GameMain()
 */
 GameMain::~GameMain()
 {
-
+	delete enemy;
 }
 
 /*
@@ -23,6 +23,7 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
+	enemy->Update();
 	return this;
 }
 
@@ -31,5 +32,6 @@ AbstractScene* GameMain::Update()
 */
 void GameMain::Draw()const
 {
+	enemy->Draw();
 	DrawFormatString(0, 0, 0xffffff, "test");
 }

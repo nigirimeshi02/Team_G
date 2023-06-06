@@ -1,5 +1,7 @@
 #pragma once
 #include "../AbstractScene.h"
+#include"../../Enemy.h"
+
 class GameMain :
     public AbstractScene
 {
@@ -15,7 +17,7 @@ public:
 	void Draw() const override;
 
 private:
-
+	Enemy* enemy;
 
 };
 

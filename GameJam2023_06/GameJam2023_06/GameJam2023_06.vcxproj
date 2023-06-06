@@ -139,9 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bom.cpp" />
     <ClCompile Include="Collider\BoxCollider.cpp" />
     <ClCompile Include="Collider\ColliderBase.cpp" />
     <ClCompile Include="Collider\LineCollider.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Food.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
     <ClCompile Include="SceneManager\Scene\GameMain.cpp" />
     <ClCompile Include="main.cpp" />
@@ -155,11 +158,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h" />
+    <ClInclude Include="Bom.h" />
     <ClInclude Include="Collider\BoxCollider.h" />
     <ClInclude Include="Collider\ColliderBase.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="Collider\E_Collider.h" />
     <ClInclude Include="Collider\LineCollider.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Food.h" />
     <ClInclude Include="ObstacleManager.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="SceneManager\Scene\GameMain.h" />
