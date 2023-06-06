@@ -15,5 +15,7 @@ private:
 	int P_x, P_y;
 	static int Sward;
 	float angle;
-	float rd;
+	float X_a[6];
+	float Y_a[6];
+	int t;
 };
