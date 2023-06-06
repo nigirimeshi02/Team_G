@@ -1,11 +1,21 @@
 #include "DxLib.h"
 #include "common.h"
+#include "Ranking.h"
 
 #include "SceneManager/SceneManager.h"
 #include "SceneManager/Scene/DebugScene.h"
 #include "SceneManager/Scene/GameMain.h"
 #include "System/SoundPlayer/SoundPlayer.h"
 
+/******************************************************
+*変数宣言
+*******************************************************/
+XINPUT_STATE input;
+int Button_flg=FALSE;
+int GameMode = 0;
+
+//ランキングデータの変数宣言
+RankingData Ranking[RANK_MAX];
 /***********************************************
  * プログラムの開始
  ***********************************************/
@@ -29,6 +39,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SoundPlayer::GetInstance();										//サウンドプレイヤーの起動
 	AbstractScene* firstScene = new GameMain();						//FirstSceneの作成
 	SceneManager* sceneManager = SceneManager::Create(firstScene);	//シーンマネージャーの起動
+
+	ReadRanking(Ranking);
 
 	// ゲームループ
 	while ((ProcessMessage() == 0) &&
