@@ -1,5 +1,8 @@
 #pragma once
+#include "../../common.h"
 #include "../AbstractScene.h"
+#include "../../SlashAction.h"
+
 class GameMain :
     public AbstractScene
 {
@@ -15,7 +18,7 @@ public:
 	void Draw() const override;
 
 private:
-
+	SlashAction* slashAction;
 
 };
 
