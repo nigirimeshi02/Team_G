@@ -7,6 +7,9 @@
 GameMain::GameMain()
 {
 	enemy = new Enemy({100,100},10);
+	food = new Food({ 200,200 }, 10);
+	bomb = new Bomb({ 300,300 }, 10);
+
 }
 
 /*
@@ -15,6 +18,8 @@ GameMain::GameMain()
 GameMain::~GameMain()
 {
 	delete enemy;
+	delete food;
+	delete bomb;
 }
 
 /*
@@ -24,6 +29,8 @@ GameMain::~GameMain()
 AbstractScene* GameMain::Update()
 {
 	enemy->Update();
+	food->Update();
+	bomb->Update();
 	return this;
 }
 
@@ -33,5 +40,7 @@ AbstractScene* GameMain::Update()
 void GameMain::Draw()const
 {
 	enemy->Draw();
+	food->Draw();
+	bomb->Draw();
 	DrawFormatString(0, 0, 0xffffff, "test");
 }

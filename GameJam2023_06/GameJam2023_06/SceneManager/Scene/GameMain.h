@@ -1,6 +1,8 @@
 #pragma once
 #include "../AbstractScene.h"
 #include"../../Enemy.h"
+#include"../../Food.h"
+#include"../../Bomb.h"
 
 class GameMain :
     public AbstractScene
@@ -18,6 +20,8 @@ public:
 
 private:
 	Enemy* enemy;
+	Food* food;
+	Bomb* bomb;
 
 };
 
