@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="attack_judgment.cpp" />
     <ClCompile Include="Collider\BoxCollider.cpp" />
     <ClCompile Include="Collider\ColliderBase.cpp" />
     <ClCompile Include="Collider\LineCollider.cpp" />
@@ -157,7 +156,6 @@
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="attack_judgment.h" />
     <ClInclude Include="Area.h" />
     <ClInclude Include="Collider\BoxCollider.h" />
     <ClInclude Include="Collider\ColliderBase.h" />

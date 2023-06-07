@@ -6,6 +6,8 @@
 #include "SceneManager/Scene/GameMain.h"
 #include "System/SoundPlayer/SoundPlayer.h"
 #include "Title.h"
+#include"System/PadInput/PadInput.h"
+
 
 /***********************************************
  * プログラムの開始
@@ -36,6 +38,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		sceneManager->Update() != nullptr
 		)
 	{
+		PAD_INPUT::UpdateKey();
+
 		ClearDrawScreen();		// 画面の初期化
 
 		sceneManager->Draw();

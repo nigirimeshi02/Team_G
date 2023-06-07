@@ -13,6 +13,8 @@ private:
 
 	TITLE_MENU Menu_Number;
 
+	int TitleImage;
+	int cursor;
 	int interval;
 	int select;
 	short JoyPadY;
