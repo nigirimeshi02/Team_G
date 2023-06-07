@@ -1,5 +1,6 @@
 #pragma once
 #include "ObstacleBase.h"
+#include <vector>
 
 class Food :
 	public ObstacleBase
