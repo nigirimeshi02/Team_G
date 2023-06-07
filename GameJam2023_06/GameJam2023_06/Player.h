@@ -4,7 +4,7 @@
 
 #define MOVE_LEFT_LIMIT 120
 #define MOVE_RIGHT_LIMIT 1170
-#define WALK_SPEED 2.0
+#define WALK_SPEED 5
 
 class Player:
 	public BoxCollider
@@ -16,7 +16,7 @@ private:
 	short JoyPadX;
 	bool atkflg;
 
-	int PlayerPaseImage;
+	int PlayerImage;
 	int PlayerLeftRunImage;
 	int PlayerRightRunImage;
 
@@ -26,7 +26,7 @@ public:
 	Player();
 	~Player();
 	void DrawPlayer()const;
-	void PlayerControll();
+	void PlayerControl();
 	int PlayerLimit();
 	Attack* GetAttack()const { return attack; }
 };
