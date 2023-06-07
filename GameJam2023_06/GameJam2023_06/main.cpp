@@ -10,12 +10,9 @@
 /******************************************************
 *変数宣言
 *******************************************************/
-XINPUT_STATE input;
-int Button_flg=FALSE;
-int GameMode = 0;
-
 //ランキングデータの変数宣言
-RankingData Ranking[RANK_MAX];
+//RankingData Ranking[RANK_MAX];
+
 /***********************************************
  * プログラムの開始
  ***********************************************/
@@ -37,10 +34,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする
 
 	SoundPlayer::GetInstance();										//サウンドプレイヤーの起動
-	AbstractScene* firstScene = new GameMain();						//FirstSceneの作成
+	AbstractScene* firstScene = new Ranking();						//FirstSceneの作成
 	SceneManager* sceneManager = SceneManager::Create(firstScene);	//シーンマネージャーの起動
 
-	ReadRanking(Ranking);
+	//ReadRanking(Ranking);
 
 	// ゲームループ
 	while ((ProcessMessage() == 0) &&

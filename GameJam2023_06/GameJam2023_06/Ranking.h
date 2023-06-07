@@ -4,14 +4,14 @@
 #define RANK_MAX (5)
 #define NAME_MAX (10)
 
+//構造体
 typedef struct {
 	int no;
 	char name[NAME_MAX];
 	long score;
 }RankingData;
 
-class Ranking :
-	public AbstractScene
+class Ranking :public AbstractScene
 {
 public:
 	Ranking();
@@ -19,14 +19,18 @@ public:
 
 	//描画以外の更新を実行
 	AbstractScene* Update()override;
-	
+	RankingData work[RANK_MAX];
+
 	//描画に関することを実装
 	void Draw() const override;
 
 private:
-	bool sceneCHG;  //シーン変更値
-
+	
+	int RankingImg;//ランキングイメージ
+	bool sceneCHG;//シーン変更地
+	
 };
 
 //プロトタイプ宣言
 int ReadRanking(RankingData Ranking[]);
+void SortRanking(RankingData Ranking[]);

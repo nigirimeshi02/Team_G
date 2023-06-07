@@ -9,5 +9,5 @@
 enum mode {
 	TITLE,
 	RANKING,
-	GAMEMAIN,
+	MAIN,
 };

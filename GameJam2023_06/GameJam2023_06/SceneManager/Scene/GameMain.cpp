@@ -1,16 +1,15 @@
 #include "GameMain.h"
 #include "../../Ranking.h"
-#include "../../padkey.h"
 
 #include "DxLib.h"
 
-int sceneCHG = false;
+//int sceneCHG = false;
 /*
 * コンストラクタ
 */
 GameMain::GameMain()
 {
-
+	//sceneCHG = false;
 }
 
 /*
@@ -27,10 +26,6 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
-	if (padkey::OnClick(XINPUT_BUTTON_A)) {
-		sceneCHG = true;
-		return new Ranking();
-	}
 	return this;
 }
 
@@ -39,5 +34,5 @@ AbstractScene* GameMain::Update()
 */
 void GameMain::Draw()const
 {
-	DrawFormatString(0, 0, 0xffffff, "test");
+	DrawFormatString(0, 0, 0xffffff, "GameMain");
 }

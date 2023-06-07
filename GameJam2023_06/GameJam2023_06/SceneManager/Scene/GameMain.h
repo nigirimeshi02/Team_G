@@ -13,6 +13,7 @@ public:
 
 	//•`‰æ‚ÉŠÖ‚·‚é‚±‚Æ‚ðŽÀ‘•
 	void Draw() const override;
+	//void Updata() override;
 
 private:
 
