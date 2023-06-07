@@ -118,7 +118,7 @@ void Player::DrawPlayer()const
 		attack->Draw();
 	}
 	
-
+	BoxCollider::Draw();
 }
 
 int  Player::PlayerLimit()

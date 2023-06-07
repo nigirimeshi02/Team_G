@@ -23,6 +23,13 @@ AbstractScene* SceneManager::Update()
 {
 	PAD_INPUT::UpdateKey();
 	KeyManager::Update();
+
+	if (KeyManager::OnKeyClicked(KEY_INPUT_ESCAPE)||
+		PAD_INPUT::OnButton(XINPUT_BUTTON_BACK))
+	{
+		return nullptr;
+	}
+
 	AbstractScene* nextScene;
 	try
 	{

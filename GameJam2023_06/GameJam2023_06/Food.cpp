@@ -37,7 +37,7 @@ void Food::Update()
 void Food::Draw()const
 {
 	SphereCollider::Draw();
-	DrawRotaGraphF(location.x, location.y, 0.5, 0, image, TRUE);
+	DrawRotaGraphF(location.x, location.y, 1.0, 0, image, TRUE);
 }
 
 /*

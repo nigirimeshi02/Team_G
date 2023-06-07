@@ -7,8 +7,7 @@
 */
 GameMain::GameMain()
 {
-	slashAction = new SlashAction(
-		{ D_SCREEN_WIDTH / 2, D_SCREEN_HEIGHT - 60 - 100 });
+	player = new Player();
 	obstacleManager = new ObstacleManager();
 }
 
@@ -17,8 +16,8 @@ GameMain::GameMain()
 */
 GameMain::~GameMain()
 {
-	delete slashAction;
 	delete obstacleManager;
+	delete player;
 }
 
 /*
@@ -27,7 +26,7 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
-	slashAction->Update();
+	player->PlayerControl();
 	obstacleManager->Update();
 	CheckHit();
 
@@ -41,9 +40,7 @@ void GameMain::Draw()const
 {
 	obstacleManager->Draw();
 
-	slashAction->Draw();
-	DrawPixel(D_SCREEN_WIDTH / 2, D_SCREEN_HEIGHT - 60 - 100, 0xFF0000);
-	DrawFormatString(0, 0, 0xffffff, "test");
+	player->DrawPlayer();
 }
 
 /*
@@ -51,18 +48,31 @@ void GameMain::Draw()const
 */
 void GameMain::CheckHit()
 {
+	//プレイヤーの攻撃
+	Attack* attack = player->GetAttack();
+	//降ってくるもの達
 	vector<ObstacleBase*> obstacles = obstacleManager->GetObstacles();
 
+	//降ってくるものとの当たり判定
 	for (ObstacleBase* obstacle : obstacles)
 	{
-		if (obstacle->GetIsShow() && slashAction->HitCheck(obstacle))
+		if (attack != nullptr &&		//プレイヤーが攻撃しているか？
+			obstacle->GetIsShow() &&	//対象のものが見えている(当たり判定を取る状態)か？
+			attack->HitCheck(obstacle))	//当たっているか？
 		{
-			obstacle->ToggleIsShow();
-			Enemy* buf = dynamic_cast<Enemy*>(obstacle);
-			if(buf != nullptr)
+			obstacle->ToggleIsShow();	//見えなくする 
+			// TODO:↑余裕があれば壊れる動き付けるため、ToggleIsBrokenにする
+			/*Enemy* buf = dynamic_cast<Enemy*>(obstacle);
+			if (buf != nullptr)
 			{
 				buf->Test();
-			}
+			}*/
+		}
+		
+		if (obstacle->GetIsShow() &&
+			player->HitCheck(obstacle))
+		{
+			obstacle->ToggleIsShow();
 		}
 	}
 }

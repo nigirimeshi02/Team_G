@@ -3,6 +3,7 @@
 #include "../AbstractScene.h"
 #include "../../ObstacleManager.h"
 #include "../../SlashAction.h"
+#include"../../Player.h"
 
 class GameMain :
     public AbstractScene
@@ -19,11 +20,11 @@ public:
 	void Draw() const override;
 
 private:
-	SlashAction* slashAction;
 	ObstacleManager* obstacleManager;
+	Player* player;
 
 
 public:
-	void CheckHit();
+	void CheckHit();	//“–‚½‚è”»’è
 };
 

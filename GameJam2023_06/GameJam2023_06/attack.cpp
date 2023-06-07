@@ -4,9 +4,9 @@
 
 int Attack::Sward = 0;
 
-Attack::Attack(int x,int y)
+Attack::Attack(int x, int y)
 {
-    // 初回のみ刀の画像を読み込む
+	// 初回のみ刀の画像を読み込む
 	if (Sward == 0)
 	{
 		Sward = (LoadGraph("Images/katana.png"));
@@ -39,12 +39,12 @@ void Attack::Update()
 	if (angle >= M_PI) {
 		isAttackEnd = true;
 	}
-	
+
 	// 当たり判定
 	float rd = angle + float(M_PI / 2);
 	location.x = 0 * cosf(rd) - D_ATTACK_RANGE * sinf(rd) + P_x;
 	location.y = 0 * sinf(rd) + D_ATTACK_RANGE * cosf(rd) + P_y;
-	
+
 	// angle履歴
 	for (int a = t; a > 0; a--)
 	{
@@ -69,15 +69,12 @@ void Attack::Draw()const
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, trailAlpha[a]);
 		DrawRotaGraph2(P_x, P_y, 180, 13, 1.0, angle_a[a], Sward, 1, 0);
 	}
-	
-	// 不透明度を下げる前に画面を更新する
-	ScreenFlip();
 
 	// 通常の画像を描画
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 	// 当たり判定(仮表示)
-	DrawCircleAA(location.x, location.y, radius, 20,0xFF0000, 1);
+	DrawCircleAA(location.x, location.y, radius, 20, 0xFF0000, 1);
 
 	DrawFormatString(0, 60, 0xFFFFFF, "%lf", angle);
 }
