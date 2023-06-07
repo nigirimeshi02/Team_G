@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="attack.cpp" />
     <ClCompile Include="Collider\BoxCollider.cpp" />
     <ClCompile Include="Collider\ColliderBase.cpp" />
     <ClCompile Include="Collider\LineCollider.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
+    <ClCompile Include="System\PadInput\PadInput.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneManager\Scene\GameMain.cpp" />
     <ClCompile Include="main.cpp" />
@@ -155,6 +157,7 @@
     <ClCompile Include="ObstacleBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="attack.h" />
     <ClInclude Include="Area.h" />
     <ClInclude Include="Collider\BoxCollider.h" />
     <ClInclude Include="Collider\ColliderBase.h" />
@@ -163,6 +166,7 @@
     <ClInclude Include="Collider\LineCollider.h" />
     <ClInclude Include="ObstacleManager.h" />
     <ClInclude Include="Location.h" />
+    <ClInclude Include="System\PadInput\PadInput.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneManager\Scene\GameMain.h" />
     <ClInclude Include="SceneManager\AbstractScene.h" />
