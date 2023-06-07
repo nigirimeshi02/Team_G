@@ -4,7 +4,7 @@
 
 int Attack::Sward = 0;
 
-Attack::Attack()
+Attack::Attack(int x,int y)
 {
 	if (Sward == 0)
 	{
@@ -13,14 +13,16 @@ Attack::Attack()
 	// ”»’èˆ—
 	radius = 5;
 	angle = 0;
-	P_x = 300;
-	P_y = 300;
+	P_x = x;
+	P_y = y;
 	//angle_a[D_ANGLE_MEMOLY] = {};
 	for (int i = 0; i < D_ANGLE_MEMOLY; i++)
 	{
 		trailAlpha[i] = 255 - ((double)i / (double)D_ANGLE_MEMOLY * 255);
 	}
 	t = 0;
+	isAttackEnd = false;
+
 }
 
 Attack::~Attack()
@@ -32,7 +34,9 @@ void Attack::Update()
 {
 	// Šp“x‚Ì‘‰Á
 	angle += D_SWARD_SPEED;
-	if (angle >= M_PI) angle = 0;
+	if (angle >= M_PI) {
+		isAttackEnd = true;
+	}
 	
 	// “–‚½‚è”»’è
 	float rd = angle + M_PI / 2;
@@ -72,6 +76,10 @@ void Attack::Draw()const
 
 	// “–‚½‚è”»’è(‰¼•\¦)
 	DrawCircle(location.x, location.y, (int)radius, 0xFF0000, 1);
+
+	DrawFormatString(0, 60, 0xFFFFFF, "%lf", angle);
 }
 
-
+int Attack::GetIsAttackEnd() {
+	return Attack::isAttackEnd;
+}

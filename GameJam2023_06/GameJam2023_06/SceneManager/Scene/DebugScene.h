@@ -18,7 +18,6 @@ public:
 	void Draw() const override;
 
 private:
-	Attack* attack;
 	BoxCollider* box;
 	Player* player;
 	Result* result;

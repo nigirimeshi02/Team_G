@@ -9,10 +9,12 @@
 class Attack:public SphereCollider
 {
 public:
-	Attack();
+	Attack(int x,int y);
 	~Attack();
 	void Draw()const;
 	void Update();
+
+	int GetIsAttackEnd();
 private:
 	int P_x, P_y;
 	static int Sward;
@@ -21,4 +23,6 @@ private:
 	float angle_a[D_ANGLE_MEMOLY];
 	int trailAlpha[D_ANGLE_MEMOLY];
 	int t;
+
+	bool isAttackEnd;
 };

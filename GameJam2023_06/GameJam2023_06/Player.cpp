@@ -12,22 +12,27 @@ Player::Player()
 	imgflg = 0;
 	life = 3;
 	JoyPadX = 128;
+	atkflg = FALSE;
 
 	PlayerPaseImage = LoadGraph("images/player.png");
 	PlayerLeftRunImage = LoadGraph("images/player_left_run.png");
 	PlayerRightRunImage = LoadGraph("images/player_right_run.png");
+
+	attack = nullptr;
 }
 
 Player::~Player()
 {
-
-
-
+	if(attack != nullptr)
+	{
+		delete attack;
+	}
 }
 
 void Player::PlayerControll()
 {
 	JoyPadX = PAD_INPUT::GetLStick().x;
+	
 
 	///////////////////
 	// パッド
@@ -72,48 +77,20 @@ void Player::PlayerControll()
 		}
 	}
 
-	/////////////////////
-	//// キーボード
-	////左
-	//if ((KeyManager::OnKeyPressed(KEY_INPUT_LEFT) == TRUE)) {
-	//	imgflg = 1;
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
+	{
+		attack = new Attack(x, y);
+		atkflg = TRUE;
+	}
 
-	//	if (PlayerLimit() == 0) {
-	//		if (speed < WALK_SPEED * -1) {
-	//			speed += 2;
-	//		}
-	//		else if (speed > WALK_SPEED * -1) {
-	//			speed -= 2;
-	//		}
-	//		else {
-	//			speed = WALK_SPEED * -1;
-	//		}
-
-	//	}
-	//}
-	////右
-	//else if ((KeyManager::OnKeyPressed(KEY_INPUT_RIGHT) == TRUE)) {
-	//	imgflg = 2;
-
-	//	if (PlayerLimit() == 0) {
-	//		if (speed > WALK_SPEED) {
-	//			speed -= 2;
-	//		}
-	//		else if (speed < WALK_SPEED) {
-	//			speed += 2;
-	//		}
-	//		else {
-	//			speed = WALK_SPEED;
-	//		}
-	//	}
-	//}
-	//
-	//else if((KeyManager::OnKeyPressed(KEY_INPUT_LEFT)==FALSE)&&(KeyManager::OnKeyPressed(KEY_INPUT_RIGHT))==FALSE){
-	//	if (PlayerLimit() == 0) {
-	//		speed = 0;
-	//		imgflg = 0;
-	//	}
-	//}
+	if (atkflg == TRUE) {
+		attack->Update();
+		if (attack->GetIsAttackEnd() == TRUE) {
+			delete attack;
+			attack = nullptr;
+			atkflg = FALSE;
+		}
+	}
 }
 
 void Player::DrawPlayer()const
@@ -134,6 +111,13 @@ void Player::DrawPlayer()const
 			DrawRotaGraph(x, y, 0.3, 0, PlayerRightRunImage, TRUE);
 		}
 	}
+
+	if(attack != nullptr)
+	{
+		attack->Draw();
+	}
+	
+
 }
 
 int  Player::PlayerLimit()

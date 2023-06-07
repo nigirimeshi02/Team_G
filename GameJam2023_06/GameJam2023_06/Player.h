@@ -1,4 +1,5 @@
 #pragma once
+#include"attack.h"
 
 #define MOVE_LEFT_LIMIT 120
 #define MOVE_RIGHT_LIMIT 1170
@@ -13,10 +14,13 @@ private:
 	float speed;
 	int life;
 	short JoyPadX;
+	bool atkflg;
 
 	int PlayerPaseImage;
 	int PlayerLeftRunImage;
 	int PlayerRightRunImage;
+
+	Attack* attack;
 
 public:
 	Player();
@@ -24,4 +28,5 @@ public:
 	void DrawPlayer()const;
 	void PlayerControll();
 	int PlayerLimit();
+	Attack* GetAttack()const { return attack; }
 };
