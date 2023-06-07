@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include "DxLib.h"
 #include "Collider/SphereCollider.h"
-#define D_ATTACK_RANGE 50
-#define D_SWARD_SPEED 0.15f
-#define D_ANGLE_MEMOLY 9
+#define D_ATTACK_RANGE 110
+#define D_SWARD_SPEED 0.2f
+#define D_ANGLE_MEMOLY 6
 
 class Attack:public SphereCollider
 {

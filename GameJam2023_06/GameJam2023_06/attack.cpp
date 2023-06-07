@@ -8,7 +8,7 @@ Attack::Attack()
 {
 	if (Sward == 0)
 	{
-		Sward = (LoadGraph("Images/slash_test.png"));
+		Sward = (LoadGraph("Images/katana.png"));
 	}
 	// 判定処理
 	radius = 5;
@@ -32,8 +32,10 @@ void Attack::Update()
 {
 	// 角度の増加
 	angle += D_SWARD_SPEED;
-	if (angle >= M_PI) angle = 0;
-	
+	if (angle >= M_PI) {
+		angle = 0;
+		WaitTimer(100);
+	}
 	// 当たり判定
 	float rd = angle + M_PI / 2;
 	location.x = 0 * cos(rd) - D_ATTACK_RANGE * sin(rd) + P_x;
@@ -55,13 +57,13 @@ void Attack::Update()
 void Attack::Draw()const
 {
 	// 画像処理
-	DrawRotaGraph2(P_x, P_y, 100, 15, 1.0, angle, Sward, 1, 0);
+	DrawRotaGraph2(P_x, P_y, 180, 13, 1.0, angle, Sward, 1, 0);
 
 	// 残像描画
 	for (int a = 0; a < t - 1; a++)
 	{
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, trailAlpha[a]);
-		DrawRotaGraph2(P_x, P_y, 100, 15, 1.0, angle_a[a], Sward, 1, 0);
+		DrawRotaGraph2(P_x, P_y, 180, 13, 1.0, angle_a[a], Sward, 1, 0);
 	}
 	
 	// 不透明度を下げる前に画面を更新する
