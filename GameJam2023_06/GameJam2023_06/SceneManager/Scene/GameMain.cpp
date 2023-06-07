@@ -29,6 +29,7 @@ AbstractScene* GameMain::Update()
 {
 	slashAction->Update();
 	obstacleManager->Update();
+	CheckHit();
 
 	return this;
 }
@@ -43,4 +44,20 @@ void GameMain::Draw()const
 	slashAction->Draw();
 	DrawPixel(D_SCREEN_WIDTH / 2, D_SCREEN_HEIGHT - 60 - 100, 0xFF0000);
 	DrawFormatString(0, 0, 0xffffff, "test");
+}
+
+/*
+* 当たり判定チェック
+*/
+void GameMain::CheckHit()
+{
+	vector<ObstacleBase*> obstacles = obstacleManager->GetObstacles();
+
+	for (ObstacleBase* obstacle : obstacles)
+	{
+		if (obstacle->GetIsShow() && slashAction->HitCheck(obstacle))
+		{
+			obstacle->ToggleIsShow();
+		}
+	}
 }

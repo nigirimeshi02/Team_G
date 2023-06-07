@@ -2,7 +2,6 @@
 #include "../../common.h"
 #include "../AbstractScene.h"
 #include "../../ObstacleManager.h"
-
 #include "../../SlashAction.h"
 
 class GameMain :
@@ -23,5 +22,8 @@ private:
 	SlashAction* slashAction;
 	ObstacleManager* obstacleManager;
 
+
+public:
+	void CheckHit();
 };
 

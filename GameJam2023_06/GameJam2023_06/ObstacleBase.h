@@ -29,5 +29,8 @@ public:
 
 	bool GetIsBroken()const { return isBroken; }
 	void ToggleIsBroken() { isBroken = !isBroken; }
+	bool GetIsShow()const { return isShow; }
+	void ToggleIsShow() { isShow = !isShow; }
+
 };
 

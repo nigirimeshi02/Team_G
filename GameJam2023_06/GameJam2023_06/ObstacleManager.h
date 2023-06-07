@@ -4,10 +4,12 @@
 
 #include <vector>
 
-//生成パターン
-#define D_TYPE_ENEMY (0)
-#define D_TYPE_BOMB	 (1)
-#define D_TYPE_FOOD	 (2)
+#define D_LEVEL_MAX (2)	//難易度上限
+
+#define D_LANE_MAX	(16)	//落ちてくるレーンの最大数
+#define D_LANE_WIDTH	(1280 / D_LANE_MAX)
+
+
 
 using namespace std;
 
@@ -21,16 +23,25 @@ public:
 	void Draw()const;
 
 private:
-	const int Production_Ratio[2][3] =
+	const int Production_Ratio[D_LEVEL_MAX][3] =
 	{
-		{5,3,2},{3,5,2},
+		{0,0,10},{3,5,2}
 	};
 	vector<ObstacleBase*> obstacles;
 	int frameCount;
+	int unavailableLane[2];
 
 
 public:
-	void CreateObstacle();	//障害物の生成
+	void CreateObstacle(int pattern);	//障害物の生成
+	void CreateFood();					//食べ物の生成
 
+	int LotteryLane();					//レーンの抽選, x座標の計算
+	void DeleteObstacles();
+
+	vector<ObstacleBase*> GetObstacles()const
+	{
+		return obstacles;
+	}
 };
 
