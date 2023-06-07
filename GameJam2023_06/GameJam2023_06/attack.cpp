@@ -4,7 +4,7 @@
 
 int Attack::Sward = 0;
 
-Attack::Attack()
+Attack::Attack(int x,int y)
 {
     // ‰‰ñ‚Ì‚İ“‚Ì‰æ‘œ‚ğ“Ç‚İ‚Ş
 	if (Sward == 0)
@@ -15,13 +15,16 @@ Attack::Attack()
 	// ‰Šú‰»ˆ—
 	radius = 5;
 	angle = 0;
-	P_x = 300;
-	P_y = 300;
+	P_x = x;
+	P_y = y - D_ATTACK_SHIFT_Y;
+	//angle_a[D_ANGLE_MEMOLY] = {};
 	for (int i = 0; i < D_ANGLE_MEMOLY; i++)
 	{
-		trailAlpha[i] = 255 - ((double)i / (double)D_ANGLE_MEMOLY * 255);
+		trailAlpha[i] = (int)(255 - ((double)i / (double)D_ANGLE_MEMOLY * 255));
 	}
 	t = 0;
+	isAttackEnd = false;
+
 }
 
 Attack::~Attack()
@@ -33,11 +36,14 @@ void Attack::Update()
 {
 	// Šp“x‚Ì‘‰Á
 	angle += D_SWARD_SPEED;
+	if (angle >= M_PI) {
+		isAttackEnd = true;
+	}
 	
 	// “–‚½‚è”»’è
-	float rd = angle + M_PI / 2;
-	location.x = 0 * cos(rd) - D_ATTACK_RANGE * sin(rd) + P_x;
-	location.y = 0 * sin(rd) + D_ATTACK_RANGE * cos(rd) + P_y;
+	float rd = angle + float(M_PI / 2);
+	location.x = 0 * cosf(rd) - D_ATTACK_RANGE * sinf(rd) + P_x;
+	location.y = 0 * sinf(rd) + D_ATTACK_RANGE * cosf(rd) + P_y;
 	
 	// angle—š—ğ
 	for (int a = t; a > 0; a--)
@@ -71,7 +77,11 @@ void Attack::Draw()const
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 	// “–‚½‚è”»’è(‰¼•\¦)
-	DrawCircle(location.x, location.y, (int)radius, 0xFF0000, 1);
+	DrawCircleAA(location.x, location.y, radius, 20,0xFF0000, 1);
+
+	DrawFormatString(0, 60, 0xFFFFFF, "%lf", angle);
 }
 
-
+int Attack::GetIsAttackEnd() {
+	return Attack::isAttackEnd;
+}

@@ -8,8 +8,10 @@
 */
 DebugScene::DebugScene()
 {
-	attack = new Attack();
+	//attack = new Attack();
 	box = new BoxCollider({300,250},{25,25});
+	player = new Player();
+	result = new Result(0,0);
 }
 
 /*
@@ -17,8 +19,9 @@ DebugScene::DebugScene()
 */
 DebugScene::~DebugScene()
 {
-	delete attack;
 	delete box;
+	delete player;
+	delete result;
 }
 
 /*
@@ -28,6 +31,8 @@ DebugScene::~DebugScene()
 AbstractScene* DebugScene::Update()
 {
 	//attack->Update();
+	player->PlayerLimit();
+	player->PlayerControl();
 	return this;
 }
 
@@ -38,8 +43,10 @@ void DebugScene::Draw()const
 {
 	//attack->Draw();
 	//box->Draw();
-
-	if (attack->HitCheck(box))
+	//result->Draw();
+	player->DrawPlayer();
+	const Attack* attack = player->GetAttack();
+	if (attack != nullptr && attack->HitCheck(box))
 	{
 		DrawString(0, 0, "HIT", 0xFFFFFF);
 	}
