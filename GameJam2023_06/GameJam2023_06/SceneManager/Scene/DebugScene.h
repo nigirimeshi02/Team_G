@@ -2,6 +2,7 @@
 #include "../../attack.h"
 #include "../../Collider/BoxCollider.h"
 #include"../../Player.h"
+#include"../../Result.h"
 #pragma once
 class DebugScene:
 	public AbstractScene
@@ -20,5 +21,7 @@ private:
 	Attack* attack;
 	BoxCollider* box;
 	Player* player;
+	Result* result;
+	int back;
 };
 

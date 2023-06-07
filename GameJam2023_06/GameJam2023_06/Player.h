@@ -12,6 +12,7 @@ private:
 	int imgflg;		//ÇOÇÕê√é~Å@ÇPÇÕç∂Å@ÇQÇÕâE
 	float speed;
 	int life;
+	short JoyPadX;
 
 	int PlayerPaseImage;
 	int PlayerLeftRunImage;
@@ -20,7 +21,7 @@ private:
 public:
 	Player();
 	~Player();
-	void DrawPlayer();
+	void DrawPlayer()const;
 	void PlayerControll();
 	int PlayerLimit();
 };
