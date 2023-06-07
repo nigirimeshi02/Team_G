@@ -11,9 +11,9 @@ Player::Player()
 	imgflg = 0;
 	life = 3;
 
-	PlayerPaseImage = LoadGraph("Images/player.png");
-	PlayerLeftRunImage = LoadGraph("Images/player_left_run.png");
-	PlayerRightRunImage = LoadGraph("Images/player_right_run.png");
+	PlayerPaseImage = LoadGraph("images/player.png");
+	PlayerLeftRunImage = LoadGraph("images/player_left_run.png");
+	PlayerRightRunImage = LoadGraph("images/player_right_run.png");
 }
 
 Player::~Player()
@@ -59,7 +59,7 @@ void Player::PlayerControll()
 		}
 	}
 	
-	else if((KeyManager::OnKeyReleased(KEY_INPUT_LEFT)==FALSE)&&(KeyManager::OnKeyReleased(KEY_INPUT_RIGHT))==FALSE){
+	else if((KeyManager::OnKeyPressed(KEY_INPUT_LEFT)==FALSE)&&(KeyManager::OnKeyPressed(KEY_INPUT_RIGHT))==FALSE){
 		if (PlayerLimit() == 0) {
 			if (speed <= 3 && speed >= 3) {
 				speed = 0;
@@ -82,7 +82,7 @@ void Player::PlayerControll()
 void Player::DrawPlayer()
 {
 	if (imgflg == 0) {
-		if (speed == 0 || x == MOVE_LEFT_LIMIT || x == MOVE_RIGHT_LIMIT) {
+		if (speed == 0) {
 			DrawRotaGraph(x, y, 0.3, 0, PlayerPaseImage, FALSE);
 		}
 	}

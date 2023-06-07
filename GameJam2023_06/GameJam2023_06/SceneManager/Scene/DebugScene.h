@@ -1,6 +1,7 @@
 #include "../AbstractScene.h"
 #include "../../attack.h"
 #include "../../Collider/BoxCollider.h"
+#include"../../Player.h"
 #pragma once
 class DebugScene:
 	public AbstractScene
@@ -18,5 +19,6 @@ public:
 private:
 	Attack* attack;
 	BoxCollider* box;
+	Player* player;
 };
 

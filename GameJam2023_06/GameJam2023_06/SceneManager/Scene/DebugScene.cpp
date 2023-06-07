@@ -10,6 +10,7 @@ DebugScene::DebugScene()
 {
 	attack = new Attack();
 	box = new BoxCollider({300,250},{25,25});
+	player = new Player();
 }
 
 /*
@@ -27,6 +28,8 @@ DebugScene::~DebugScene()
 */
 AbstractScene* DebugScene::Update()
 {
+	player->PlayerLimit();
+	player->PlayerControll();
 	attack->Update();
 	return this;
 }
@@ -38,6 +41,7 @@ void DebugScene::Draw()const
 {
 	attack->Draw();
 	box->Draw();
+	player->DrawPlayer();
 
 	if (attack->HitCheck(box))
 	{
