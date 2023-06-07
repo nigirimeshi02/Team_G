@@ -2,7 +2,7 @@
 #include "Collider/SphereCollider.h"
 #include "common.h"
 
-class ObstacleBase:
+class ObstacleBase :
 	public SphereCollider
 {
 	/*
@@ -15,11 +15,13 @@ class ObstacleBase:
 public:
 	ObstacleBase();
 	~ObstacleBase();
-	ObstacleBase(Location location,float radius);
+	ObstacleBase(Location location, float radius, float speed, int score);
+	
 
 protected:
 	float speed;		//ˆÚ“®‘¬“x
 	bool isBroken;		//‰ó‚ê‚½‚©‚Ç‚¤‚©
+	int score;
 
 public:
 	virtual void Update() = 0;
