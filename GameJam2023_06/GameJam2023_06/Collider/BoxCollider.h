@@ -9,7 +9,7 @@ protected:
 	Area area; //”ÍˆÍ
 
 public:
-	BoxCollider(Location location, Area area);
+	BoxCollider(Location location = Location{}, Area area = Area{ 100,100 });
 	~BoxCollider();
 
 	virtual void Draw()const;
