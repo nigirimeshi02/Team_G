@@ -33,5 +33,5 @@ AbstractScene* DebugScene::Update()
 */
 void DebugScene::Draw()const
 {
-	
+
 }
