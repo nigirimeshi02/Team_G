@@ -37,15 +37,15 @@ void Player::PlayerControll()
 	///////////////////
 	// パッド
 	//左
-	if (JoyPadX < 128) {
+	if (JoyPadX < -MARGIN && JoyPadX >= -MARGIN * 4 - 1) {
 		imgflg = 1;
 
 		if (PlayerLimit() == 0) {
 			if (speed < WALK_SPEED * -1) {
-				speed += 2;
+				speed += 5;
 			}
 			else if (speed > WALK_SPEED * -1) {
-				speed -= 2;
+				speed -= 5;
 			}
 			else {
 				speed = WALK_SPEED * -1;
@@ -54,15 +54,15 @@ void Player::PlayerControll()
 		}
 	}
 	//右
-	else if (JoyPadX > 128) {
+	else if (JoyPadX > MARGIN && JoyPadX <= MARGIN * 4) {
 		imgflg = 2;
 
 		if (PlayerLimit() == 0) {
 			if (speed > WALK_SPEED) {
-				speed -= 2;
+				speed -= 5;
 			}
 			else if (speed < WALK_SPEED) {
-				speed += 2;
+				speed += 5;
 			}
 			else {
 				speed = WALK_SPEED;
@@ -70,7 +70,7 @@ void Player::PlayerControll()
 		}
 	}
 
-	else if (JoyPadX == 128) {
+	else if (JoyPadX <= MARGIN && -MARGIN <= JoyPadX) {
 		if (PlayerLimit() == 0) {
 			speed = 0;
 			imgflg = 0;
@@ -103,12 +103,12 @@ void Player::DrawPlayer()const
 		}
 	}
 	if (imgflg == 1) {
-		if (speed > -3) {
+		if (speed > -6) {
 			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerLeftRunImage, TRUE);
 		}
 	}
 	if (imgflg == 2) {
-		if (speed < 3) {
+		if (speed < 6) {
 			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerRightRunImage, TRUE);
 		}
 	}
