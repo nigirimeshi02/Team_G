@@ -15,8 +15,11 @@ Attack::Attack()
 	angle = 0;
 	P_x = 300;
 	P_y = 300;
-	X_a[5] = {};
-	Y_a[5] = {};
+	//angle_a[D_ANGLE_MEMOLY] = {};
+	for (int i = 0; i < D_ANGLE_MEMOLY; i++)
+	{
+		trailAlpha[i] = 255 - ((double)i / (double)D_ANGLE_MEMOLY * 255);
+	}
 	t = 0;
 }
 
@@ -28,7 +31,7 @@ Attack::~Attack()
 void Attack::Update()
 {
 	// 角度の増加
-	angle += 0.15f;
+	angle += D_SWARD_SPEED;
 	if (angle >= M_PI) angle = 0;
 	
 	// 当たり判定
@@ -39,12 +42,12 @@ void Attack::Update()
 	// location履歴
 	for (int a = t; a > 0; a--)
 	{
-		X_a[a] = X_a[a - 1];
-		Y_a[a] = Y_a[a - 1];
+		angle_a[a] = angle_a[a - 1];
 	}
-	X_a[0] = location.x;
-	Y_a[0] = location.y;
-	if (t <= 5) {
+	angle_a[0] = angle;
+
+	// 数列の上限になるまでインクリメント
+	if (t < D_ANGLE_MEMOLY - 1) {
 		t++;
 	}
 }
@@ -53,10 +56,19 @@ void Attack::Draw()const
 {
 	// 画像処理
 	DrawRotaGraph2(P_x, P_y, 100, 15, 1.0, angle, Sward, 1, 0);
-	for (int a = t - 1; a > 0; a--)
+
+	// 残像描画
+	for (int a = 0; a < t - 1; a++)
 	{
-		DrawCircle(X_a[a], Y_a[a], 2, 0xFFFFFF, 1);
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, trailAlpha[a]);
+		DrawRotaGraph2(P_x, P_y, 100, 15, 1.0, angle_a[a], Sward, 1, 0);
 	}
+	
+	// 不透明度を下げる前に画面を更新する
+	ScreenFlip();
+
+	// 通常の画像を描画
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 	// 当たり判定(仮表示)
 	DrawCircle(location.x, location.y, (int)radius, 0xFF0000, 1);
