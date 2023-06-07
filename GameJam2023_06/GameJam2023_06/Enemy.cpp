@@ -3,6 +3,7 @@
 
 int Enemy::image = 0;
 
+
 /*
 * コンストラクタ
 */
@@ -13,6 +14,9 @@ Enemy::Enemy(Location location, float radius, float speed, int score)
 	{
 		image = LoadGraph("Images/enemy.png");
 	}
+	
+	enemy.emplace_back(100);
+	
 }
 
 /*
@@ -36,6 +40,7 @@ void Enemy::Update()
 */
 void Enemy::Draw()const
 {
+	
 	DrawRotaGraphF(location.x, location.y, 1.0, 0, image, TRUE);
 }
 

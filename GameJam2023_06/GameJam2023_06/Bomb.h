@@ -14,4 +14,5 @@ private:
 public:
 	void Update();
 	void Draw()const;
+	std::vector<int>bomb;
 };

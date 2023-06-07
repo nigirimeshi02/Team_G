@@ -16,6 +16,7 @@ public:
 	ObstacleBase();
 	~ObstacleBase();
 	ObstacleBase(Location location, float radius, float speed, int score);
+	
 
 protected:
 	float speed;		//ˆÚ“®‘¬“x

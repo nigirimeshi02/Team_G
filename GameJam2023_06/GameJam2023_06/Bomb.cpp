@@ -13,6 +13,7 @@ Bomb::Bomb(Location location, float radius, float speed, int score)
 	{
 		image = LoadGraph("Images/bomb.png");
 	}
+	bomb.emplace_back(100);
 }
 
 /*
