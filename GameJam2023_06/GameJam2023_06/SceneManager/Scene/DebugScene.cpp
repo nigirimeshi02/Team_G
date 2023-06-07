@@ -8,7 +8,8 @@
 */
 DebugScene::DebugScene()
 {
-
+	attack = new Attack();
+	box = new BoxCollider({300,250},{25,25});
 }
 
 /*
@@ -16,7 +17,8 @@ DebugScene::DebugScene()
 */
 DebugScene::~DebugScene()
 {
-
+	delete attack;
+	delete box;
 }
 
 /*
@@ -25,6 +27,7 @@ DebugScene::~DebugScene()
 */
 AbstractScene* DebugScene::Update()
 {
+	//attack->Update();
 	return this;
 }
 
@@ -33,5 +36,11 @@ AbstractScene* DebugScene::Update()
 */
 void DebugScene::Draw()const
 {
-	
+	//attack->Draw();
+	//box->Draw();
+
+	if (attack->HitCheck(box))
+	{
+		DrawString(0, 0, "HIT", 0xFFFFFF);
+	}
 }

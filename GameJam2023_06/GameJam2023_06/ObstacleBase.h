@@ -2,7 +2,7 @@
 #include "Collider/SphereCollider.h"
 #include "common.h"
 
-class ObstacleBase:
+class ObstacleBase :
 	public SphereCollider
 {
 	/*
