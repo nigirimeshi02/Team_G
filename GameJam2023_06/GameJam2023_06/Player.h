@@ -1,15 +1,15 @@
 #pragma once
 #include"attack.h"
+#include "Collider/BoxCollider.h"
 
 #define MOVE_LEFT_LIMIT 120
 #define MOVE_RIGHT_LIMIT 1170
 #define WALK_SPEED 2.0
 
-class Player
+class Player:
+	public BoxCollider
 {
 private:
-	int x;
-	int y;
 	int imgflg;		//ÇOÇÕê√é~Å@ÇPÇÕç∂Å@ÇQÇÕâE
 	float speed;
 	int life;

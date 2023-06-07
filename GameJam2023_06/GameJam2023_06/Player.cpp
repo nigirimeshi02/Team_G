@@ -6,8 +6,8 @@
 
 Player::Player()
 {
-	x = 600;
-	y = 500;
+	location.x = 600;
+	location.y = 500;
 	speed = 0;
 	imgflg = 0;
 	life = 3;
@@ -77,9 +77,10 @@ void Player::PlayerControll()
 		}
 	}
 
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B) &&
+		attack == nullptr)
 	{
-		attack = new Attack(x, y);
+		attack = new Attack((int)location.x, (int)location.y);
 		atkflg = TRUE;
 	}
 
@@ -98,17 +99,17 @@ void Player::DrawPlayer()const
 	DrawFormatString(0, 0, 0xffffff, "%d", JoyPadX);
 	if (imgflg == 0) {
 		if (speed == 0) {
-			DrawRotaGraph(x, y, 0.3, 0, PlayerPaseImage, TRUE);
+			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerPaseImage, TRUE);
 		}
 	}
 	if (imgflg == 1) {
 		if (speed > -3) {
-			DrawRotaGraph(x, y, 0.3, 0, PlayerLeftRunImage, TRUE);
+			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerLeftRunImage, TRUE);
 		}
 	}
 	if (imgflg == 2) {
 		if (speed < 3) {
-			DrawRotaGraph(x, y, 0.3, 0, PlayerRightRunImage, TRUE);
+			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerRightRunImage, TRUE);
 		}
 	}
 
@@ -122,18 +123,25 @@ void Player::DrawPlayer()const
 
 int  Player::PlayerLimit()
 {
-	if (x < MOVE_LEFT_LIMIT) {
+	if (location.x < MOVE_LEFT_LIMIT) {
 		speed = 0;
-		x = MOVE_LEFT_LIMIT;
+		location.x = MOVE_LEFT_LIMIT;
 		return 1;
 	}
-	else if (x > MOVE_RIGHT_LIMIT) {
+	else if (location.x > MOVE_RIGHT_LIMIT) {
 		speed = 0;
-		x = MOVE_RIGHT_LIMIT;
+		location.x = MOVE_RIGHT_LIMIT;
 		return 1;
 	}
-	else {
-		x += speed;
+	else if (atkflg == true)
+	{
+		speed = 0;
+		imgflg = 0;
+		return 1;
+	}
+	else
+	{
+		location.x += speed;
 		return 0;
 	}
 }
