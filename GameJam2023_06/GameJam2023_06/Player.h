@@ -16,7 +16,7 @@ private:
 	short JoyPadX;
 	bool atkflg;
 
-	int PlayerPaseImage;
+	int PlayerImage;
 	int PlayerLeftRunImage;
 	int PlayerRightRunImage;
 
@@ -26,7 +26,7 @@ public:
 	Player();
 	~Player();
 	void DrawPlayer()const;
-	void PlayerControll();
+	void PlayerControl();
 	int PlayerLimit();
 	Attack* GetAttack()const { return attack; }
 };

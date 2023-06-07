@@ -14,7 +14,7 @@ Player::Player()
 	JoyPadX = 128;
 	atkflg = FALSE;
 
-	PlayerPaseImage = LoadGraph("images/player.png");
+	PlayerImage = LoadGraph("images/player.png");
 	PlayerLeftRunImage = LoadGraph("images/player_left_run.png");
 	PlayerRightRunImage = LoadGraph("images/player_right_run.png");
 
@@ -29,7 +29,7 @@ Player::~Player()
 	}
 }
 
-void Player::PlayerControll()
+void Player::PlayerControl()
 {
 	JoyPadX = PAD_INPUT::GetLStick().x;
 	
@@ -99,7 +99,7 @@ void Player::DrawPlayer()const
 	DrawFormatString(0, 0, 0xffffff, "%d", JoyPadX);
 	if (imgflg == 0) {
 		if (speed == 0) {
-			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerPaseImage, TRUE);
+			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerImage, TRUE);
 		}
 	}
 	if (imgflg == 1) {
