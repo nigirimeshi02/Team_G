@@ -13,7 +13,6 @@ Food::Food(Location location, float radius, float speed, int score)
 	{
 		image = LoadGraph("Images/banana.png");
 	}
-	food.emplace_back(100);
 }
 
 /*

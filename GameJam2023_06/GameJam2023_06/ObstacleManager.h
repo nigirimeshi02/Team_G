@@ -1,6 +1,8 @@
 #pragma once
 #include "ObstacleBase.h"
 #include "Food.h"
+#include "Bomb.h"
+#include "Enemy.h"
 
 #include <vector>
 
@@ -25,15 +27,16 @@ public:
 private:
 	const int Production_Ratio[D_LEVEL_MAX][3] =
 	{
-		{0,0,10},{3,5,2}
+		{5,3,2},{3,5,2}
 	};
 	vector<ObstacleBase*> obstacles;
 	int frameCount;
 	int unavailableLane[2];
 
-
 public:
 	void CreateObstacle(int pattern);	//áŠQ•¨‚Ì¶¬
+	void CreateEnemy();					//“G‚Ì¶¬
+	void CreateBomb();					//”š’e‚Ì¶¬
 	void CreateFood();					//H‚×•¨‚Ì¶¬
 
 	int LotteryLane();					//ƒŒ[ƒ“‚Ì’Š‘I, xÀ•W‚ÌŒvZ

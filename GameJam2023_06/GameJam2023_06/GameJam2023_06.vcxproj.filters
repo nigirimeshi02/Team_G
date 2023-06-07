@@ -87,7 +87,10 @@
     <ClCompile Include="Title.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="attack_judgment.cpp">
+    <ClCompile Include="attack.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SlashAction.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,9 +149,6 @@
     <ClInclude Include="Title.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="attack_judgment.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -158,5 +158,22 @@
     <ClInclude Include="Food.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="attack.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SlashAction.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\cursor.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Images\katana.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Images\Title.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
   </ItemGroup>
 </Project>

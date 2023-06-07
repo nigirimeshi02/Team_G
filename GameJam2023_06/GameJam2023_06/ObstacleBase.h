@@ -31,6 +31,6 @@ public:
 	void ToggleIsBroken() { isBroken = !isBroken; }
 	bool GetIsShow()const { return isShow; }
 	void ToggleIsShow() { isShow = !isShow; }
-
+	int GetScore() const { return score; }
 };
 

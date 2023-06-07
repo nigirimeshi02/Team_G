@@ -30,7 +30,6 @@ ObstacleManager::~ObstacleManager()
 void ObstacleManager::Update()
 {
 	frameCount++;
-	Draw();
 	DeleteObstacles();
 
 	for (ObstacleBase* obstacle : obstacles)
@@ -75,16 +74,38 @@ void ObstacleManager::CreateObstacle(int pattern)
 
 	if (rand <= ratio)
 	{
-		//エネミー生成処理を実装
+		CreateEnemy();
 	}
 	else if (rand <= (ratio += Production_Ratio[pattern][1]))
 	{
-		//ボム生成処理を実装する
+		CreateBomb();
 	}
 	else
 	{
 		CreateFood();
 	}
+}
+
+/*
+* 敵の生成処理
+*/
+void ObstacleManager::CreateEnemy()
+{
+	Location location;
+	location.x = LotteryLane();
+	location.y = 50;
+	obstacles.push_back(new Enemy(location, D_LANE_WIDTH / 2));
+}
+
+/*
+* 爆弾の生成処理
+*/
+void ObstacleManager::CreateBomb()
+{
+	Location location;
+	location.x = LotteryLane();
+	location.y = 50;
+	obstacles.push_back(new Bomb(location, D_LANE_WIDTH / 2));
 }
 
 /*

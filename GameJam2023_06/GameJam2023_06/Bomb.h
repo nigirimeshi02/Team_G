@@ -1,6 +1,5 @@
 #pragma once
 #include "ObstacleBase.h"
-#include <vector>
 
 class Bomb :
 	public ObstacleBase
@@ -15,5 +14,4 @@ private:
 public:
 	void Update();
 	void Draw()const;
-	std::vector<int>bomb;
 };

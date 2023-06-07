@@ -58,6 +58,11 @@ void GameMain::CheckHit()
 		if (obstacle->GetIsShow() && slashAction->HitCheck(obstacle))
 		{
 			obstacle->ToggleIsShow();
+			Enemy* buf = dynamic_cast<Enemy*>(obstacle);
+			if(buf != nullptr)
+			{
+				buf->Test();
+			}
 		}
 	}
 }

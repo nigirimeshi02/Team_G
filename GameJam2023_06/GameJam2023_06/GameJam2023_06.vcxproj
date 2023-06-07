@@ -147,6 +147,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
+    <ClCompile Include="SlashAction.cpp" />
     <ClCompile Include="System\PadInput\PadInput.cpp" />
     <ClCompile Include="SceneManager\Scene\GameMain.cpp" />
     <ClCompile Include="main.cpp" />
