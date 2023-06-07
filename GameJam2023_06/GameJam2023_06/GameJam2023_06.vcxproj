@@ -177,6 +177,11 @@
     <ClInclude Include="ObstacleBase.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\cursor.png" />
+    <Image Include="Images\katana.png" />
+    <Image Include="Images\Title.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

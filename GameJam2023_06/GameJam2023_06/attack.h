@@ -14,9 +14,9 @@ public:
 	void Draw()const;
 	void Update();
 private:
-	int P_x, P_y;
-	static int Sward;
-	float angle;
+	int P_x, P_y; // プレイヤー座標
+	static int Sward; // 刀画像
+	float angle; // 刀の角度
 	// 残像の座標と不透明度を管理する配列
 	float angle_a[D_ANGLE_MEMOLY];
 	int trailAlpha[D_ANGLE_MEMOLY];

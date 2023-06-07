@@ -6,16 +6,17 @@ int Attack::Sward = 0;
 
 Attack::Attack()
 {
+    // ‰‰ñ‚Ì‚İ“‚Ì‰æ‘œ‚ğ“Ç‚İ‚Ş
 	if (Sward == 0)
 	{
 		Sward = (LoadGraph("Images/katana.png"));
 	}
-	// ”»’èˆ—
+
+	// ‰Šú‰»ˆ—
 	radius = 5;
 	angle = 0;
 	P_x = 300;
 	P_y = 300;
-	//angle_a[D_ANGLE_MEMOLY] = {};
 	for (int i = 0; i < D_ANGLE_MEMOLY; i++)
 	{
 		trailAlpha[i] = 255 - ((double)i / (double)D_ANGLE_MEMOLY * 255);
@@ -32,16 +33,13 @@ void Attack::Update()
 {
 	// Šp“x‚Ì‘‰Á
 	angle += D_SWARD_SPEED;
-	if (angle >= M_PI) {
-		angle = 0;
-		WaitTimer(100);
-	}
+	
 	// “–‚½‚è”»’è
 	float rd = angle + M_PI / 2;
 	location.x = 0 * cos(rd) - D_ATTACK_RANGE * sin(rd) + P_x;
 	location.y = 0 * sin(rd) + D_ATTACK_RANGE * cos(rd) + P_y;
 	
-	// location—š—ğ
+	// angle—š—ğ
 	for (int a = t; a > 0; a--)
 	{
 		angle_a[a] = angle_a[a - 1];
