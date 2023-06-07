@@ -40,7 +40,7 @@ public:
 	void CreateFood();					//食べ物の生成
 
 	int LotteryLane();					//レーンの抽選, x座標の計算
-	void DeleteObstacles();
+	void DeleteObstacles();				//使い終わったオブジェクトの削除
 
 	vector<ObstacleBase*> GetObstacles()const
 	{

@@ -23,7 +23,7 @@ private:
 	ObstacleManager* obstacleManager;
 	Player* player;
 
-
+	int score;
 public:
 	void CheckHit();	//“–‚½‚è”»’è
 };

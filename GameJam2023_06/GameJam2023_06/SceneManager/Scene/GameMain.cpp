@@ -9,6 +9,8 @@ GameMain::GameMain()
 {
 	player = new Player();
 	obstacleManager = new ObstacleManager();
+
+	score = 0;
 }
 
 /*
@@ -60,8 +62,10 @@ void GameMain::CheckHit()
 			obstacle->GetIsShow() &&	//対象のものが見えている(当たり判定を取る状態)か？
 			attack->HitCheck(obstacle))	//当たっているか？
 		{
-			obstacle->ToggleIsShow();	//見えなくする 
+			obstacle->ToggleIsShow();		//見えなくする 
 			// TODO:↑余裕があれば壊れる動き付けるため、ToggleIsBrokenにする
+			score += obstacle->GetScore();	//スコア加算
+			
 			/*Enemy* buf = dynamic_cast<Enemy*>(obstacle);
 			if (buf != nullptr)
 			{

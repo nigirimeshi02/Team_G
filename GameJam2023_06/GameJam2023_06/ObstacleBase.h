@@ -1,6 +1,7 @@
 #pragma once
 #include "Collider/SphereCollider.h"
 #include "common.h"
+#define D_OBSTACLE_KILL_Y (D_SCREEN_HEIGHT - 70 - 50)	//画面サイズ - UIサイズ - マージン
 
 class ObstacleBase :
 	public SphereCollider
@@ -32,5 +33,6 @@ public:
 	bool GetIsShow()const { return isShow; }
 	void ToggleIsShow() { isShow = !isShow; }
 	int GetScore() const { return score; }
+	bool GetIsScreenOut()const { return (location.y > D_OBSTACLE_KILL_Y); }
 };
 

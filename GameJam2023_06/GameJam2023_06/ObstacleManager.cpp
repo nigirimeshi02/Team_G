@@ -145,7 +145,7 @@ void ObstacleManager::DeleteObstacles()
 {
 	for (int i = 0; i < obstacles.size(); i++)
 	{
-		if (obstacles[i]->GetIsShow() == false)
+		if (obstacles[i]->GetIsShow() == false )
 		{
 			delete obstacles[i];
 			obstacles.erase(obstacles.begin() + i);
