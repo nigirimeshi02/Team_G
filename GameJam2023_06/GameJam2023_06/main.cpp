@@ -6,12 +6,8 @@
 #include "SceneManager/Scene/DebugScene.h"
 #include "SceneManager/Scene/GameMain.h"
 #include "System/SoundPlayer/SoundPlayer.h"
-
-/******************************************************
-*変数宣言
-*******************************************************/
-//ランキングデータの変数宣言
-//RankingData Ranking[RANK_MAX];
+#include "Title.h"
+#include"System/PadInput/PadInput.h"
 
 /***********************************************
  * プログラムの開始
@@ -44,9 +40,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		sceneManager->Update() != nullptr
 		)
 	{
+		PAD_INPUT::UpdateKey();
+
 		ClearDrawScreen();		// 画面の初期化
 
 		sceneManager->Draw();
+		
 
 		ScreenFlip();			// 裏画面の内容を表画面に反映
 

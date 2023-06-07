@@ -139,24 +139,56 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bomb.cpp" />
+    <ClCompile Include="attack.cpp" />
+    <ClCompile Include="Collider\BoxCollider.cpp" />
+    <ClCompile Include="Collider\ColliderBase.cpp" />
+    <ClCompile Include="Collider\LineCollider.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Food.cpp" />
+    <ClCompile Include="ObstacleManager.cpp" />
+    <ClCompile Include="System\PadInput\PadInput.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="SceneManager\Scene\GameMain.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneManager\AbstractScene.cpp" />
     <ClCompile Include="SceneManager\SceneManager.cpp" />
     <ClCompile Include="SceneManager\Scene\DebugScene.cpp" />
+    <ClCompile Include="Collider\SphereCollider.cpp" />
     <ClCompile Include="System\KeyManager\KeyManager.cpp" />
     <ClCompile Include="System\SoundPlayer\SoundPlayer.cpp" />
+    <ClCompile Include="ObstacleBase.cpp" />
+    <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="attack.h" />
+    <ClInclude Include="Area.h" />
+    <ClInclude Include="Bomb.h" />
+    <ClInclude Include="Collider\BoxCollider.h" />
+    <ClInclude Include="Collider\ColliderBase.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="Collider\E_Collider.h" />
+    <ClInclude Include="Collider\LineCollider.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Food.h" />
+    <ClInclude Include="ObstacleManager.h" />
+    <ClInclude Include="Location.h" />
+    <ClInclude Include="System\PadInput\PadInput.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="SceneManager\Scene\GameMain.h" />
     <ClInclude Include="SceneManager\AbstractScene.h" />
     <ClInclude Include="SceneManager\SceneManager.h" />
     <ClInclude Include="SceneManager\Scene\DebugScene.h" />
+    <ClInclude Include="Collider\SphereCollider.h" />
     <ClInclude Include="System\KeyManager\KeyManager.h" />
     <ClInclude Include="System\SoundPlayer\SoundPlayer.h" />
+    <ClInclude Include="ObstacleBase.h" />
+    <ClInclude Include="Title.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\cursor.png" />
+    <Image Include="Images\katana.png" />
+    <Image Include="Images\Title.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
