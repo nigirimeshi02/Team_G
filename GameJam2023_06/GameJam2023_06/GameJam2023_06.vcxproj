@@ -146,6 +146,7 @@
     <ClCompile Include="Collider\LineCollider.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Food.cpp" />
+    <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
     <ClCompile Include="System\PadInput\PadInput.cpp" />
     <ClCompile Include="SceneManager\Scene\GameMain.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Collider\LineCollider.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Food.h" />
+    <ClInclude Include="GameMain.h" />
     <ClInclude Include="ObstacleManager.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="System\PadInput\PadInput.h" />
