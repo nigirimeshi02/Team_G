@@ -2,13 +2,17 @@
 #include "common.h"
 #include "DxLib.h"
 #include"System/PadInput/PadInput.h"
+#include"System/SoundPlayer/SoundPlayer.h"
+
 Title::Title()
 {
+	TitleBGM = SoundPlayer::GetBGM("Title_BGM");
 	TitleImage = LoadGraph("Images/Title.png");
 	cursor = LoadGraph("Images/cursor.png");
 	interval = 0;
 	select = 0;
 	
+	SoundPlayer::PlayBGM(TitleBGM);
 }
 
 AbstractScene* Title::Update()
@@ -63,12 +67,12 @@ void Title::Draw()const
 	DrawFormatString(558, D_SCREEN_HEIGHT / 5, 0xff0000, "Title");
 
 	//スタート
-	DrawFormatString(558, 400, 0x000000, "Start");
+	DrawFormatString(558, 400, 0x007f00, "Start");
 
 	//ランキング
-	DrawFormatString(558, 470, 0x000000, "Ranking");
+	DrawFormatString(558, 470, 0x007f00, "Ranking");
 
 	//エンド
-	DrawFormatString(558, 540, 0x000000, "End");
+	DrawFormatString(558, 540, 0x007f00, "End");
 	
 }
