@@ -27,7 +27,7 @@ DebugScene::~DebugScene()
 */
 AbstractScene* DebugScene::Update()
 {
-	attack->Update();
+	//attack->Update();
 	return this;
 }
 
@@ -36,8 +36,8 @@ AbstractScene* DebugScene::Update()
 */
 void DebugScene::Draw()const
 {
-	attack->Draw();
-	box->Draw();
+	//attack->Draw();
+	//box->Draw();
 
 	if (attack->HitCheck(box))
 	{
