@@ -32,7 +32,7 @@ AbstractScene* DebugScene::Update()
 {
 	//attack->Update();
 	player->PlayerLimit();
-	player->PlayerControll();
+	player->PlayerControl();
 	return this;
 }
 
