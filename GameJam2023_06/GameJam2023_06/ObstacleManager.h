@@ -39,7 +39,7 @@ public:
 	void CreateBomb();					//爆弾の生成
 	void CreateFood();					//食べ物の生成
 
-	int LotteryLane();					//レーンの抽選, x座標の計算
+	float LotteryLane();					//レーンの抽選, x座標の計算
 	void DeleteObstacles();				//使い終わったオブジェクトの削除
 
 	vector<ObstacleBase*> GetObstacles()const

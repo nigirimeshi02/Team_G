@@ -122,7 +122,7 @@ void ObstacleManager::CreateFood()
 /*
 * ƒŒ[ƒ“‚Ì’Š‘I
 */
-int ObstacleManager::LotteryLane()
+float ObstacleManager::LotteryLane()
 {
 	int rand = GetRand(D_LANE_MAX - 1);
 	while (unavailableLane[0] == rand || unavailableLane[1] == rand)
@@ -133,7 +133,7 @@ int ObstacleManager::LotteryLane()
 	unavailableLane[1] = unavailableLane[0];
 	unavailableLane[0] = rand;
 
-	return  (rand * D_LANE_WIDTH) + (D_LANE_WIDTH / 2);
+	return  (float)(rand * D_LANE_WIDTH) + (D_LANE_WIDTH / 2);
 }
 
 
@@ -145,7 +145,8 @@ void ObstacleManager::DeleteObstacles()
 {
 	for (int i = 0; i < obstacles.size(); i++)
 	{
-		if (obstacles[i]->GetIsShow() == false )
+		if (obstacles[i]->GetIsShow() == false ||
+			obstacles[i]->GetIsScreenOut() == true)
 		{
 			delete obstacles[i];
 			obstacles.erase(obstacles.begin() + i);

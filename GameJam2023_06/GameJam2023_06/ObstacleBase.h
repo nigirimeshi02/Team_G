@@ -32,7 +32,7 @@ public:
 	void ToggleIsBroken() { isBroken = !isBroken; }
 	bool GetIsShow()const { return isShow; }
 	void ToggleIsShow() { isShow = !isShow; }
-	int GetScore() const { return score; }
+	virtual int GetScore() const { return score; }
 	bool GetIsScreenOut()const { return (location.y > D_OBSTACLE_KILL_Y); }
 };
 
