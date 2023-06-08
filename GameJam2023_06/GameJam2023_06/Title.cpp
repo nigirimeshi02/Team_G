@@ -1,8 +1,9 @@
 #include "Title.h"
 #include "common.h"
 #include "DxLib.h"
-#include"System/PadInput/PadInput.h"
-#include"System/SoundPlayer/SoundPlayer.h"
+#include "System/PadInput/PadInput.h"
+#include "System/SoundPlayer/SoundPlayer.h"
+#include "SceneManager/Scene/GameMain.h"
 
 Title::Title()
 {
@@ -47,7 +48,7 @@ AbstractScene* Title::Update()
 		
 		SoundPlayer::PlaySE(Cursor_Enter, TRUE);
 		//各シーン
-		//if (TITLE_MENU::START == Menu_Number) return new GameMain(); 
+		if (TITLE_MENU::START == Menu_Number) return new GameMain(); 
 		//if (TITLE_MENU::RANKING == Menu_Number)return new Ranking(); 
 		//if (TITLE_MENU::END == Menu_Number)return new End();
 		
@@ -79,5 +80,6 @@ void Title::Draw()const
 
 	//エンド
 	DrawFormatString(558, 540, 0x007f00, "End");
-	
+
+	SetFontSize(16);
 }

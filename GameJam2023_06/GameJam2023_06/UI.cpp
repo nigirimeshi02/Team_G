@@ -32,7 +32,7 @@ void UI::Draw()const
 	}
 
 	DrawGraph(D_LIFE_SPACE, D_GAME_SCREEN_FOOTER + 3, imageEnemy, TRUE);
-	DrawGraph(D_LIFE_SPACE, D_GAME_SCREEN_FOOTER + 3, imageBombk, TRUE);
+	DrawGraph(D_LIFE_SPACE, D_GAME_SCREEN_FOOTER + 3, imageBomb, TRUE);
 }
 
 /*

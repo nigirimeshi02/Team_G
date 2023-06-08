@@ -1,6 +1,5 @@
 #include "GameMain.h"
-#include "../../SlashAction.h"
-
+#include "../../System/SoundPlayer/SoundPlayer.h"
 #include "DxLib.h"
 /*
 * コンストラクタ
@@ -14,6 +13,10 @@ GameMain::GameMain()
 	ui->SetScore(&score);
 
 	score = 0;
+
+	gameMainBGM = SoundPlayer::GetBGM("GameMain");
+
+	SoundPlayer::PlayBGM(gameMainBGM);
 }
 
 /*
@@ -68,34 +71,39 @@ void GameMain::CheckHit()
 			obstacle->GetIsShow() &&	//対象のものが見えている(当たり判定を取る状態)か？
 			attack->HitCheck(obstacle))	//当たっているか？
 		{
-			CheckType(obstacle);
 			obstacle->ToggleIsShow();		//見えなくする 
 			// TODO:↑余裕があれば壊れる動き付けるため、ToggleIsBrokenにする
 			score += obstacle->GetScore();	//スコア加算
-			
+			if (dynamic_cast<Bomb*>(obstacle) != nullptr)
+			{
+				player->HitDamage();
+			}
 		}
 		
 		// プレイヤー本体との当たり判定
 		if (obstacle->GetIsShow() &&					//対象のものが見えている(当たり判定を取る状態)か？
 			player->HitCheck(obstacle))					//当たっているか
 		{
-			if (dynamic_cast<Enemy*>(obstacle) == nullptr)	//エネミー以外か？(消えるもの？)
+			if (dynamic_cast<Food*>(obstacle) != nullptr)	//食べ物か？
 			{
-				if (dynamic_cast<Food*>(obstacle) != nullptr)//食べ物か？
+				score += obstacle->GetScore();
+				obstacle->ToggleIsShow();
+			}
+			else if (player->GetIsInvincible() != true)
+			{
+				player->HitDamage();
+				if (dynamic_cast<Enemy*>(obstacle) != nullptr)	//エネミーか？(消えないもの？)
+				{
+					score += obstacle->GetScore() * -0.2;  //減算用
+				}
+				else											//それ以外（爆弾）の場合
 				{
 					score += obstacle->GetScore();
+					obstacle->ToggleIsShow();					//消す
 				}
-				else	//それ以外(ダメージを受けるもの)の場合
-				{
-					//プレイヤーのライフを削る
-				}
-				obstacle->ToggleIsShow();
 
 			}
-			else	//エネミーの場合
-			{
-				//消さずにプレイヤーのライフを削る処理
-			}
+
 		}
 		
 	}

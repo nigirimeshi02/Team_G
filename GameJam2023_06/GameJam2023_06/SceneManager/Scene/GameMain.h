@@ -2,7 +2,6 @@
 #include "../../common.h"
 #include "../AbstractScene.h"
 #include "../../ObstacleManager.h"
-#include "../../SlashAction.h"
 #include "../../Player.h"
 #include "../../UI.h"
 
@@ -25,6 +24,7 @@ private:
 	Player* player;
 	UI* ui;
 
+	int gameMainBGM;
 	int score;
 public:
 	void CheckHit();	//“–‚½‚è”»’è
