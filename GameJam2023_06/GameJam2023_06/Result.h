@@ -9,6 +9,7 @@ public:
 	~Result();
 
 	AbstractScene* Update()override;
+
 	//void Update();
 	void Draw();
 

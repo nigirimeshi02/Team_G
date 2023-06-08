@@ -3,6 +3,7 @@
 
 #include "../../System/SoundPlayer/SoundPlayer.h"
 #include "DxLib.h"
+#include "../../System/KeyManager/KeyManager.h"
 
 //int sceneCHG = false;
 /*
@@ -41,6 +42,11 @@ AbstractScene* GameMain::Update()
 	player->Update();
 	obstacleManager->Update();
 	CheckHit();
+
+	if (KeyManager::OnKeyClicked(KEY_INPUT_S))
+	{
+		return new Ranking();
+	}
 
 	return this;
 }

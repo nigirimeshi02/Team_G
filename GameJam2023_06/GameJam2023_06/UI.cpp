@@ -1,6 +1,10 @@
 #include "UI.h"
 #include "DxLib.h"
 
+//変数の宣言
+int RoopC = 60;
+int TF ;
+
 /*
 * コンストラクタ
 */
@@ -10,6 +14,7 @@ UI::UI()
 	imagePlayerLife = LoadGraph("Images/UI_life.png");
 	imageEnemy = LoadGraph("Images/UI_enemy.png");
 	imageBomb = LoadGraph("Images/UI_bomb.png");
+	
 }
 
 /*
@@ -19,6 +24,8 @@ UI::~UI()
 {
 
 }
+
+
 
 /*
 * 描画
@@ -33,18 +40,5 @@ void UI::Draw()const
 
 	DrawGraph(D_LIFE_SPACE, D_GAME_SCREEN_FOOTER + 3, imageEnemy, TRUE);
 	DrawGraph(D_LIFE_SPACE, D_GAME_SCREEN_FOOTER + 3, imageBomb, TRUE);
+
 }
-
-/*
-* 
-*/
-
-
-/*
-* コンストラクタ
-*/
-
-
-/*
-* コンストラクタ
-*/
