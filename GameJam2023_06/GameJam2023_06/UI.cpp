@@ -43,4 +43,3 @@ void UI::Draw()const
 	SetFontSize(16);
 }
 
-}

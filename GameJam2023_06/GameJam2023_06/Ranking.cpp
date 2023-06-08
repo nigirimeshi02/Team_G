@@ -13,7 +13,7 @@ int RankingImg; //ƒ‰ƒ“ƒLƒ“ƒO‰æ‘œ
 int Ranking;
 int GetScore;
 int i, j;
-//int GetScore;
+
 
 RankingData work;
 
@@ -35,7 +35,7 @@ Ranking::~Ranking()
 
 AbstractScene* Ranking::Update()
 {
-	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_A))
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 	{
 		return new Title();
 	}
