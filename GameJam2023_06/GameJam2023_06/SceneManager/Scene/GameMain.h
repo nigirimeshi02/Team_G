@@ -1,8 +1,9 @@
 #pragma once
+#include "../../common.h"
 #include "../AbstractScene.h"
-#include"../../Enemy.h"
-#include"../../Food.h"
-#include"../../Bomb.h"
+#include "../../ObstacleManager.h"
+#include "../../SlashAction.h"
+#include"../../Player.h"
 
 class GameMain :
     public AbstractScene
@@ -20,9 +21,11 @@ public:
 	//void Updata() override;
 
 private:
-	Enemy* enemy;
-	Food* food;
-	Bomb* bomb;
+	ObstacleManager* obstacleManager;
+	Player* player;
 
+	int score;
+public:
+	void CheckHit();	//“–‚½‚è”»’è
 };
 

@@ -33,7 +33,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	AbstractScene* firstScene = new Ranking();						//FirstSceneの作成
 	SceneManager* sceneManager = SceneManager::Create(firstScene);	//シーンマネージャーの起動
 
-	//ReadRanking(Ranking);
+
+	AbstractScene* firstScene = new Title();						//FirstSceneの作成
+
+	SceneManager* sceneManager = SceneManager::Create(firstScene);	//シーンマネージャーの起動
 
 	// ゲームループ
 	while ((ProcessMessage() == 0) &&

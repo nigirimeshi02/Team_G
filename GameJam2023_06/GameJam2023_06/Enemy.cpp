@@ -15,7 +15,6 @@ Enemy::Enemy(Location location, float radius, float speed, int score)
 		image = LoadGraph("Images/enemy.png");
 	}
 	
-	enemy.emplace_back(100);
 	
 }
 

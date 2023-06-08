@@ -8,6 +8,7 @@ ObstacleBase::ObstacleBase()
 	location = { 100,0 };
 	score = 100;
 	isBroken = false;
+	isShow = true;
 }
 
 /*
@@ -27,4 +28,5 @@ ObstacleBase::ObstacleBase(Location location, float radius = 5, float speed = 2,
 	this->speed = speed;
 	this->score = score;
 	isBroken = false;
+	isShow = true;
 }

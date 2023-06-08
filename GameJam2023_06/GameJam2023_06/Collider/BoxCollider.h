@@ -9,7 +9,7 @@ protected:
 	Area area; //”ÍˆÍ
 
 public:
-	BoxCollider(Location location, Area area);
+	BoxCollider(Location location = Location{}, Area area = Area{ 100,100 });
 	~BoxCollider();
 
 	virtual void Draw()const;
@@ -35,12 +35,12 @@ public:
 	//¶ã‚ÌÀ•W‚ğæ“¾
 	Location GetMin()const
 	{
-		return Location{ location.x - area.width / 2,location.y - area.height };
+		return Location{ location.x - area.width / 2,location.y - area.height / 2 };
 	}
 	//‰E‰º‚ÌÀ•W‚ğæ“¾
 	Location GetMax()const
 	{
-		return Location{ location.x + area.width / 2,location.y + area.height };
+		return Location{ location.x + area.width / 2,location.y + area.height / 2 };
 	}
 
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include "Collider/SphereCollider.h"
 #include "common.h"
+#define D_OBSTACLE_KILL_Y (D_SCREEN_HEIGHT - 70 - 50)	//画面サイズ - UIサイズ - マージン
 
 class ObstacleBase :
 	public SphereCollider
@@ -16,12 +17,12 @@ public:
 	ObstacleBase();
 	~ObstacleBase();
 	ObstacleBase(Location location, float radius, float speed, int score);
-	
 
 protected:
 	float speed;		//移動速度
 	bool isBroken;		//壊れたかどうか
-	int score;
+	bool isShow;		//映す映さない
+	int score;			//スコア
 
 public:
 	virtual void Update() = 0;
@@ -29,5 +30,9 @@ public:
 
 	bool GetIsBroken()const { return isBroken; }
 	void ToggleIsBroken() { isBroken = !isBroken; }
+	bool GetIsShow()const { return isShow; }
+	void ToggleIsShow() { isShow = !isShow; }
+	virtual int GetScore() const { return score; }
+	bool GetIsScreenOut()const { return (location.y > D_OBSTACLE_KILL_Y); }
 };
 

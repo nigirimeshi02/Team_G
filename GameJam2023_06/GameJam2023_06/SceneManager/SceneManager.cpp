@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "../System/KeyManager/KeyManager.h"
+#include "../System/PadInput/PadInput.h"
 
 SceneManager* SceneManager::instance = nullptr;
 
@@ -20,7 +21,15 @@ SceneManager::~SceneManager()
 */
 AbstractScene* SceneManager::Update()
 {
+	PAD_INPUT::UpdateKey();
 	KeyManager::Update();
+
+	if (KeyManager::OnKeyClicked(KEY_INPUT_ESCAPE)||
+		PAD_INPUT::OnButton(XINPUT_BUTTON_BACK))
+	{
+		return nullptr;
+	}
+
 	AbstractScene* nextScene;
 	try
 	{

@@ -8,7 +8,7 @@
 * Location ColliderBase ’†SÀ•W
 * Area		BoxCollider	 ”ÍˆÍ
 */
-BoxCollider::BoxCollider(Location location = Location{}, Area area = Area{ 100,100 })
+BoxCollider::BoxCollider(Location location , Area area)
 	:ColliderBase(location)
 {
 	colliderType = E_Collider::Box;
