@@ -49,7 +49,7 @@ AbstractScene* Title::Update()
 	if (select < 0)select = 2;
 	if (select > 2)select = 0;
 
-	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_A) && interval >= 30) {
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && interval >= 30) {
 		
 		SoundPlayer::PlaySE(Cursor_Enter, TRUE);
 		//ŠeƒV[ƒ“
