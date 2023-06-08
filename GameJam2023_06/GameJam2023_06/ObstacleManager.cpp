@@ -150,7 +150,8 @@ void ObstacleManager::DeleteObstacles()
 			delete obstacles[i];
 			obstacles.erase(obstacles.begin() + i);
 		}
-		else if (obstacles[i]->GetIsScreenOut() == true)
+		else if (obstacles[i]->GetIsScreenOut() == true &&
+				 dynamic_cast<Bomb*>(obstacles[i]) != nullptr)
 		{
 			avoidCount++;
 			delete obstacles[i];

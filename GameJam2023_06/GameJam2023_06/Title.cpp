@@ -1,6 +1,4 @@
 #include "Title.h"
-#include "GameMain.h"
-#include "rankin"
 #include "common.h"
 #include "DxLib.h"
 #include "Ranking.h"
