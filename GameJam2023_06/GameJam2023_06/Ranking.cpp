@@ -1,7 +1,10 @@
 #include "DxLib.h"
+#include "Title.h"
 #include "Ranking.h"
 #include "SceneManager/Scene/GameMain.h"
-#include "System/KeyManager/KeyManager.h"
+#include "System/PadInput/PadInput.h"
+#include "System/SoundPlayer/SoundPlayer.h"
+
 
 
 /****************************************
@@ -23,6 +26,7 @@ Ranking::Ranking()
 	//画像の仮表示
 	RankingImg = LoadGraph("images/ranking01.png");
 	ReadRanking(work);
+	Cursor_Cancel = SoundPlayer::GetSE("Cursor_Cancel");
 }
 //デストラクタ
 Ranking::~Ranking()
@@ -32,9 +36,10 @@ Ranking::~Ranking()
 
 AbstractScene* Ranking::Update()
 {
-	if (KeyManager::OnKeyClicked(KEY_INPUT_A))
+	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_A))
 	{
-		return new GameMain();
+		SoundPlayer::PlaySE(Cursor_Cancel, FALSE);
+		return new Title();
 	}
 	return this;
 }

@@ -13,7 +13,6 @@ Title::Title()
 	TitleBGM = SoundPlayer::GetBGM("Title_BGM");
 	Cursor_Move = SoundPlayer::GetSE("Cursor_Move");
 	Cursor_Enter = SoundPlayer::GetSE("Cursor_Enter");
-	Cursor_Cancel = SoundPlayer::GetSE("Cursor_Canccel");
 	TitleImage = LoadGraph("Images/Title.png");
 	cursor = LoadGraph("Images/cursor.png");
 	interval = 0;
