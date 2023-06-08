@@ -2,6 +2,7 @@
 #include "Title.h"
 #include "Ranking.h"
 #include "SceneManager/Scene/GameMain.h"
+#include "System/KeyManager/KeyManager.h"
 #include "System/PadInput/PadInput.h"
 #include "System/SoundPlayer/SoundPlayer.h"
 
@@ -15,7 +16,7 @@ int RankingImg; //ランキング画像
 int Ranking;
 int GetScore;
 int i, j;
-//int GetScore;
+
 
 RankingData work;
 
@@ -24,9 +25,10 @@ RankingData work;
 Ranking::Ranking()
 {
 	//画像の仮表示
-	RankingImg = LoadGraph("images/ranking01.png");
+	RankingImg = LoadGraph("images/ranking.png");
 	ReadRanking(work);
-	Cursor_Cancel = SoundPlayer::GetSE("Cursor_Cancel");
+	SortRanking(work);
+
 }
 //デストラクタ
 Ranking::~Ranking()
@@ -36,9 +38,8 @@ Ranking::~Ranking()
 
 AbstractScene* Ranking::Update()
 {
-	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_A))
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 	{
-		SoundPlayer::PlaySE(Cursor_Cancel, FALSE);
 		return new Title();
 	}
 	return this;
@@ -51,9 +52,9 @@ void Ranking::Draw()const
 	//ランキング一覧を表示
 	SetFontSize(60);
 	for (int i = 0; i < RANK_MAX; i++) {
-		DrawFormatString(260, 180 + i * 85, 0x800000, "%2d %-10s %10d", work[i].no, work[i].name, work[i].score);
+		DrawFormatString(260, 180 + i * 85, 0x8b0000, "%2d %-10s %10d", work[i].no, work[i].name, work[i].score);
 	}
-	DrawString(350, 620, "Aボタンでタイトルへ",0x800000, 0);
+	DrawString(350, 620, "Aボタンでタイトルへ",0x8b0000, 0);
 }
 
 /***********************************************

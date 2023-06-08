@@ -5,6 +5,7 @@
 #include "ResultScene.h"
 #include "../../System/SoundPlayer/SoundPlayer.h"
 #include "DxLib.h"
+#include "../../System/KeyManager/KeyManager.h"
 
 //int sceneCHG = false;
 /*
@@ -56,8 +57,9 @@ AbstractScene* GameMain::Update()
 		if (mScene == nullptr)
 		{
 			delete mScene;
-			return new Title();
+			return new Ranking();
 		}
+		return this;
 	}
 
 	if (isGameEnd)
