@@ -119,7 +119,7 @@ void Player::Update()
 
 void Player::DrawPlayer()const
 {
-	DrawFormatString(0, 0, 0xffffff, "%d", JoyPadX);
+	//DrawFormatString(0, 0, 0xffffff, "%d", JoyPadX);
 	if (imageCnt == 0) {
 		if (speed == 0 && blinkFlg == FALSE) {
 			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerImage, TRUE);
@@ -141,7 +141,6 @@ void Player::DrawPlayer()const
 		attack->Draw();
 	}
 	
-	BoxCollider::Draw();
 }
 
 int  Player::PlayerLimit()
