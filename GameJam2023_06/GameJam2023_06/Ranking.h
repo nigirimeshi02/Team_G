@@ -1,5 +1,6 @@
 #pragma once
 #include "SceneManager/AbstractScene.h"
+#include "Title.h"
 
 #define RANK_MAX (5)
 #define NAME_MAX (10)
@@ -25,7 +26,17 @@ public:
 	void Draw() const override;
 
 private:
-	
+	enum class RANKING_MENU {
+		START,
+		RANKING,
+		END
+	};
+
+	RANKING_MENU Menu_Number;
+
+	int interval;
+	int select;
+	short JoyPadY;
 	int RankingImg;//ランキングイメージ
 	bool sceneCHG;//シーン変更地
 	int Cursor_Cancel;

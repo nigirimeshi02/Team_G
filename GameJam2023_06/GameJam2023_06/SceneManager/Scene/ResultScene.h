@@ -13,6 +13,7 @@ public:
 
 private:
     int imageBack;
+    int imageEnemy;
     const int score;
     const int killCount;
     const int avoidCount;

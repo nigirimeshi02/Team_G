@@ -73,10 +73,10 @@ void Attack::Draw()const
 	// ’Êí‚Ì‰æ‘œ‚ğ•`‰æ
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
-	// “–‚½‚è”»’è(‰¼•\¦)
-	DrawCircleAA(location.x, location.y, radius, 20, 0xFF0000, 1);
+	//// “–‚½‚è”»’è(‰¼•\¦)
+	//DrawCircleAA(location.x, location.y, radius, 20, 0xFF0000, 1);
 
-	DrawFormatString(0, 60, 0xFFFFFF, "%lf", angle);
+	//DrawFormatString(0, 60, 0xFFFFFF, "%lf", angle);
 }
 
 int Attack::GetIsAttackEnd() {

@@ -1,12 +1,13 @@
 #include "Title.h"
 #include "SceneManager/Scene/GameMain.h"
-#include "Ranking.h"
-#include "End.h"
+#include "ranking.h"
 #include "common.h"
 #include "DxLib.h"
 #include"System/PadInput/PadInput.h"
-#include "System/SoundPlayer/SoundPlayer.h"
+#include"System/SoundPlayer/SoundPlayer.h"
 #include "System/KeyManager/KeyManager.h"
+#include "SceneManager/Scene/GameMain.h"
+#include"End.h"
 
 Title::Title()
 {
@@ -48,7 +49,7 @@ AbstractScene* Title::Update()
 	if (select < 0)select = 2;
 	if (select > 2)select = 0;
 
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B) && interval >= 30) {
+	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_A) && interval >= 30) {
 		
 		SoundPlayer::PlaySE(Cursor_Enter, TRUE);
 		//äeÉVÅ[Éì
@@ -58,11 +59,6 @@ AbstractScene* Title::Update()
 		
 		interval = 0;
 	}
-	if (KeyManager::OnKeyClicked(KEY_INPUT_S))
-	{
-		return new Ranking();
-	}
-	
 	return this;
 }
 

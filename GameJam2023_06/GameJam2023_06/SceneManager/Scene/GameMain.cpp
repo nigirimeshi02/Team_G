@@ -5,6 +5,7 @@
 #include "ResultScene.h"
 #include "../../System/SoundPlayer/SoundPlayer.h"
 #include "DxLib.h"
+#include "../../System/KeyManager/KeyManager.h"
 
 //int sceneCHG = false;
 /*
@@ -17,7 +18,9 @@ GameMain::GameMain()
 	obstacleManager = new ObstacleManager();
 	ui = new UI();
 	ui->SetLife(player->GetLife());
-	ui->SetScore(&score);
+	ui->SetKillCount(&killCount);
+	ui->SetAvoidCount(obstacleManager->GetCount());
+	ui->SetEatCount(&eatCount);
 
 	gameMainBGM = SoundPlayer::GetBGM("GameMain");
 	boomSE = SoundPlayer::GetSE("Boom");
@@ -54,8 +57,9 @@ AbstractScene* GameMain::Update()
 		if (mScene == nullptr)
 		{
 			delete mScene;
-			return new Title();
+			return new Ranking();
 		}
+		return this;
 	}
 
 	if (isGameEnd)
@@ -63,7 +67,7 @@ AbstractScene* GameMain::Update()
 		frameCount--;
 		if (frameCount <= 0)
 		{
-			mScene = new ResultScene();
+			mScene = new ResultScene(score, killCount, *(obstacleManager->GetCount()),eatCount);
 		}
 		return this;		//ˆÈ~‚Ìˆ—‚ðŽ~‚ß‚é
 	}
@@ -126,7 +130,7 @@ void GameMain::CheckHit()
 				SoundPlayer::PlaySE(boomSE, FALSE);
 				player->HitDamage();
 			}
-			if (dynamic_cast<Bomb*>(obstacle) != nullptr)
+			if (dynamic_cast<Enemy*>(obstacle) != nullptr)
 			{
 				killCount++;
 			}
