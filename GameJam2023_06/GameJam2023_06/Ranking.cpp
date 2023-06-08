@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "Title.h"
 #include "Ranking.h"
+#include "InputRanking.h"
 #include "SceneManager/Scene/GameMain.h"
 #include "System/KeyManager/KeyManager.h"
 #include "System/PadInput/PadInput.h"
@@ -18,17 +19,23 @@ int GetScore;
 int i, j;
 
 
-RankingData work;
 
 
 //コンストラクタ
-Ranking::Ranking()
+Ranking::Ranking(int score)
 {
 	//画像の仮表示
 	RankingImg = LoadGraph("images/ranking.png");
 	ReadRanking(work);
 	SortRanking(work);
 	Cursor_Cancel = SoundPlayer::GetSE("Cursor_Cancel");
+	newScore = score;
+	newName = 0;
+	if (work[4].score < score)
+	{
+		work[4].score = score;
+		mScene = new InputRanking(newName);
+	}
 }
 //デストラクタ
 Ranking::~Ranking()
@@ -38,6 +45,17 @@ Ranking::~Ranking()
 
 AbstractScene* Ranking::Update()
 {
+	if (mScene != nullptr)
+	{
+		mScene = mScene->Update();
+		if (mScene == nullptr)
+		{
+			delete mScene;
+		}
+		sprintf_s(work[4].name, 10, newName->c_str());
+	}
+
+
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 	{
 		SoundPlayer::PlaySE(Cursor_Cancel, FALSE);

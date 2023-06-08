@@ -57,7 +57,7 @@ AbstractScene* GameMain::Update()
 		if (mScene == nullptr)
 		{
 			delete mScene;
-			return new Ranking();
+			return new Ranking(100000);
 		}
 		return this;
 	}

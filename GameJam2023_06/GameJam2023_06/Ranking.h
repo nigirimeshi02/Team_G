@@ -1,6 +1,8 @@
 #pragma once
 #include "SceneManager/AbstractScene.h"
 #include "Title.h"
+#include <string>
+using namespace std;
 
 #define RANK_MAX (5)
 #define NAME_MAX (10)
@@ -15,7 +17,7 @@ typedef struct {
 class Ranking :public AbstractScene
 {
 public:
-	Ranking();
+	Ranking(int score = 0);
 	~Ranking();
 
 	//描画以外の更新を実行
@@ -26,6 +28,7 @@ public:
 	void Draw() const override;
 
 private:
+	AbstractScene* mScene;
 	enum class RANKING_MENU {
 		START,
 		RANKING,
@@ -40,6 +43,8 @@ private:
 	int RankingImg;//ランキングイメージ
 	bool sceneCHG;//シーン変更地
 	int Cursor_Cancel;
+	int newScore;
+	string* newName;
 	
 };
 
