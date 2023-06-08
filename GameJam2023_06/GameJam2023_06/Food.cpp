@@ -11,7 +11,7 @@ Food::Food(Location location, float radius, float speed, int score)
 {
 	if (image == 0)
 	{
-		image = LoadGraph("Images/banana.png");
+		image = LoadGraph("Images/onigiri.png");
 	}
 }
 

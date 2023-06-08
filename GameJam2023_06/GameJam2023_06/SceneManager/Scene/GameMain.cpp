@@ -1,4 +1,5 @@
 #include "GameMain.h"
+#include "../../Title.h"
 #include "../../System/SoundPlayer/SoundPlayer.h"
 #include "DxLib.h"
 /*
@@ -15,8 +16,12 @@ GameMain::GameMain()
 	score = 0;
 
 	gameMainBGM = SoundPlayer::GetBGM("GameMain");
+	imageBack = LoadGraph("images/main.png");
 
 	SoundPlayer::PlayBGM(gameMainBGM);
+
+	frameCount = 0;
+	isGameEnd = false;
 }
 
 /*
@@ -34,10 +39,25 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
+	if (isGameEnd)
+	{
+		frameCount--;
+		if (frameCount <= 0)
+		{
+			return new Title();
+		}
+		return this;
+	}
+
 	player->Update();
 	obstacleManager->Update();
 	CheckHit();
 
+	if (*(player->GetLife()) == 0)
+	{
+		isGameEnd = true;
+		frameCount = 2 * 60;
+	}
 	return this;
 }
 
@@ -46,6 +66,8 @@ AbstractScene* GameMain::Update()
 */
 void GameMain::Draw()const
 {
+	DrawGraph(0, 0, imageBack,TRUE);
+
 	obstacleManager->Draw();
 
 	player->DrawPlayer();
@@ -66,6 +88,7 @@ void GameMain::CheckHit()
 	//降ってくるものとの当たり判定
 	for (ObstacleBase* obstacle : obstacles)
 	{
+
 		// プレイヤーの攻撃との当たり判定
 		if (attack != nullptr &&		//プレイヤーが攻撃しているか？
 			obstacle->GetIsShow() &&	//対象のものが見えている(当たり判定を取る状態)か？
@@ -94,12 +117,15 @@ void GameMain::CheckHit()
 				player->HitDamage();
 				if (dynamic_cast<Enemy*>(obstacle) != nullptr)	//エネミーか？(消えないもの？)
 				{
-					score += obstacle->GetScore() * -0.2;  //減算用
+					score += (int)(obstacle->GetScore() * -0.2);  //減算用
 				}
 				else											//それ以外（爆弾）の場合
 				{
-					score += obstacle->GetScore();
-					obstacle->ToggleIsShow();					//消す
+					if(obstacle != nullptr)
+					{
+						score += obstacle->GetScore();
+						obstacle->ToggleIsShow();					//消す
+					}
 				}
 
 			}

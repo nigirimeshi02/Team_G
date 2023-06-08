@@ -33,6 +33,11 @@ void UI::Draw()const
 
 	DrawGraph(D_LIFE_SPACE, D_GAME_SCREEN_FOOTER + 3, imageEnemy, TRUE);
 	DrawGraph(D_LIFE_SPACE, D_GAME_SCREEN_FOOTER + 3, imageBomb, TRUE);
+	
+	SetFontSize(64);
+	DrawFormatString(D_LIFE_SPACE + (101 * 2), D_GAME_SCREEN_FOOTER + 3, 0x00ff00,
+		"SCORE: %d", (*score));
+	SetFontSize(16);
 }
 
 /*
