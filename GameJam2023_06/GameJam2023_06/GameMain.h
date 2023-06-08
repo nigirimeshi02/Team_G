@@ -1,6 +1,5 @@
 #pragma once
-#pragma once
-#include "SceneManager/AbstractScene.h"
+#include "../GameJam2023_06/SceneManager/AbstractScene.h"
 
 class GameMain : public AbstractScene {
 
