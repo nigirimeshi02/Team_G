@@ -14,7 +14,9 @@ private:
 	TITLE_MENU Menu_Number;
 
 	int TitleBGM;
-
+	int Cursor_Move;
+	int Cursor_Enter;
+	int Cursor_Cancel;
 	int TitleImage;
 	int cursor;
 	int interval;

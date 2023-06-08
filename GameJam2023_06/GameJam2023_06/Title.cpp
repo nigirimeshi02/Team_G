@@ -7,6 +7,8 @@
 Title::Title()
 {
 	TitleBGM = SoundPlayer::GetBGM("Title_BGM");
+	Cursor_Enter = SoundPlayer::GetSE("Cursor_Enter");
+	Cursor_Cancel = SoundPlayer::GetSE("Cursor_Canccel");
 	TitleImage = LoadGraph("Images/Title.png");
 	cursor = LoadGraph("Images/cursor.png");
 	interval = 0;
@@ -41,6 +43,7 @@ AbstractScene* Title::Update()
 
 	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_B) && interval >= 30) {
 		
+		SoundPlayer::PlaySE(Cursor_Enter, 1);
 		//ŠeƒV[ƒ“
 		//if (TITLE_MENU::START == Menu_Number) return new GameMain(); 
 		//if (TITLE_MENU::RANKING == Menu_Number)return new Ranking(); 
