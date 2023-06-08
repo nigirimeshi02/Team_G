@@ -28,7 +28,7 @@ Ranking::Ranking()
 	RankingImg = LoadGraph("images/ranking.png");
 	ReadRanking(work);
 	SortRanking(work);
-
+	Cursor_Cancel = SoundPlayer::GetSE("Cursor_Cancel");
 }
 //デストラクタ
 Ranking::~Ranking()
@@ -40,6 +40,7 @@ AbstractScene* Ranking::Update()
 {
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 	{
+		SoundPlayer::PlaySE(Cursor_Cancel, FALSE);
 		return new Title();
 	}
 	return this;
