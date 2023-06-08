@@ -6,7 +6,7 @@
 
 #include <vector>
 
-#define D_LEVEL_MAX (2)	//“ïˆÕ“xãŒÀ
+#define D_LEVEL_MAX (3)	//“ïˆÕ“xãŒÀ
 
 #define D_LANE_MAX	(16)	//—‚¿‚Ä‚­‚éƒŒ[ƒ“‚ÌÅ‘å”
 #define D_LANE_WIDTH	(1280 / D_LANE_MAX)
@@ -27,8 +27,9 @@ public:
 private:
 	const int Production_Ratio[D_LEVEL_MAX][3] =
 	{
-		{5,3,2},{3,5,2}
+		{5,3,2},{6,2,2},{6,1,3}
 	};
+	int OBJECT_MAX;
 	vector<ObstacleBase*> obstacles;
 	int frameCount;
 	int unavailableLane[2];

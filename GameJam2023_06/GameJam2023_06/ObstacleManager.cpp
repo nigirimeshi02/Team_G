@@ -10,6 +10,7 @@ ObstacleManager::ObstacleManager()
 	unavailableLane[0] = GetRand(GetRand(D_LANE_MAX - 1));
 	unavailableLane[1] = GetRand(GetRand(D_LANE_MAX - 1));
 	avoidCount = 0;
+	OBJECT_MAX = 1;
 }
 
 /*
@@ -41,6 +42,11 @@ void ObstacleManager::Update()
 	{
 		CreateObstacle(0);
 	}
+
+	if ((frameCount % 450) == 0)
+	{
+		OBJECT_MAX += 1;
+	}
 }
 
 /*
@@ -64,25 +70,28 @@ void ObstacleManager::Draw()const
 */
 void ObstacleManager::CreateObstacle(int pattern)
 {
-	int rand = GetRand(9) + 1;	//1～10の10個の数字を取得
-	if ((D_LEVEL_MAX - 1) < pattern)
+	for (int i = 0; i < OBJECT_MAX; i++)
 	{
-		pattern = D_LEVEL_MAX - 1;
-	}
+		int rand = GetRand(9) + 1;	//1～10の10個の数字を取得
 
-	int ratio = Production_Ratio[pattern][0];	//エネミーのやつ
+		int Rate = Production_Ratio[pattern][0];	//エネミーのやつ
 
-	if (rand <= ratio)
-	{
-		CreateEnemy();
-	}
-	else if (rand <= (ratio += Production_Ratio[pattern][1]))
-	{
-		CreateBomb();
-	}
-	else
-	{
-		CreateFood();
+		if (rand <= Rate)
+		{
+			CreateEnemy();
+		}
+		else if (rand <= 10 - Production_Ratio[pattern][1])
+		{
+			CreateBomb();
+		}
+		else
+		{
+			CreateFood();
+
+		}
+		if (i % 5 == 0 && i != 0) {
+			pattern++;
+		}
 	}
 }
 
