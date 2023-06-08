@@ -162,7 +162,6 @@ void GameMain::CheckHit()
 						SoundPlayer::PlaySE(boomSE, FALSE);
 						score += obstacle->GetScore();
 						obstacle->ToggleIsShow();					//è¡Ç∑
-
 					}
 				}
 

@@ -10,6 +10,9 @@ public:
 
 private:
 	static int image;
+	static int bakuhatu_Img;
+
+	bool bakuhatu_Flg;
 
 public:
 	void Update();

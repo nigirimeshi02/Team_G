@@ -196,6 +196,7 @@
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Images\bakuhatsu.png" />
     <Image Include="Images\cursor.png" />
     <Image Include="Images\katana.png" />
     <Image Include="Images\Title.png" />

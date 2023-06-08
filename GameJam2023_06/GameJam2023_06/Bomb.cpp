@@ -2,6 +2,7 @@
 #include "Bomb.h"
 
 int Bomb::image = 0;
+int Bomb::bakuhatu_Img= 0;
 
 /*
 * コンストラクタ
@@ -13,6 +14,12 @@ Bomb::Bomb(Location location, float radius, float speed, int score)
 	{
 		image = LoadGraph("Images/bomb.png");
 	}
+	if (bakuhatu_Img == 0)
+	{
+		bakuhatu_Img = LoadGraph("Images/bakuhatsu.png");
+		bakuhatu_Flg = FALSE;
+	}
+	
 }
 
 /*
@@ -28,7 +35,12 @@ Bomb::~Bomb()
 */
 void Bomb::Update()
 {
-	location.y += speed;
+		location.y += speed;
+
+		if (isShow == FALSE)
+		{
+			bakuhatu_Flg == TRUE;
+		}
 }
 
 /*
@@ -36,9 +48,16 @@ void Bomb::Update()
 */
 void Bomb::Draw()const
 {
-	DrawRotaGraphF(location.x, location.y, 1.0, 0, image, TRUE);
-}
 
+	if (bakuhatu_Flg != TRUE)
+	{
+		DrawRotaGraphF(location.x, location.y, 1.0, 0, image, TRUE);
+	}
+	else
+	{
+		DrawRotaGraphF(location.x, location.y, 1.0, 0, bakuhatu_Img, TRUE);
+	}
+}
 /*
 *
 */
