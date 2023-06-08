@@ -160,6 +160,7 @@
     <ClCompile Include="System\SoundPlayer\SoundPlayer.cpp" />
     <ClCompile Include="ObstacleBase.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="attack.h" />
@@ -186,6 +187,7 @@
     <ClInclude Include="System\SoundPlayer\SoundPlayer.h" />
     <ClInclude Include="ObstacleBase.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\cursor.png" />

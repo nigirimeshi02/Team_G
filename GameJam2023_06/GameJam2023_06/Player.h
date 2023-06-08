@@ -29,4 +29,5 @@ public:
 	void PlayerControl();
 	int PlayerLimit();
 	Attack* GetAttack()const { return attack; }
+	const int* GetLife()const { return &life; }
 };

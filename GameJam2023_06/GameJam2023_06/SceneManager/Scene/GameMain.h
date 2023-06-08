@@ -3,7 +3,8 @@
 #include "../AbstractScene.h"
 #include "../../ObstacleManager.h"
 #include "../../SlashAction.h"
-#include"../../Player.h"
+#include "../../Player.h"
+#include "../../UI.h"
 
 class GameMain :
     public AbstractScene
@@ -22,6 +23,7 @@ public:
 private:
 	ObstacleManager* obstacleManager;
 	Player* player;
+	UI* ui;
 
 	int score;
 public:

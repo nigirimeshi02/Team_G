@@ -9,6 +9,9 @@ GameMain::GameMain()
 {
 	player = new Player();
 	obstacleManager = new ObstacleManager();
+	ui = new UI();
+	ui->SetLife(player->GetLife());
+	ui->SetScore(&score);
 
 	score = 0;
 }
@@ -43,6 +46,8 @@ void GameMain::Draw()const
 	obstacleManager->Draw();
 
 	player->DrawPlayer();
+
+	ui->Draw();
 }
 
 /*
