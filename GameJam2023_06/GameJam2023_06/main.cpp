@@ -1,6 +1,6 @@
 #include "DxLib.h"
 #include "common.h"
-#include "Ranking.h"
+#include "InputRanking.h"
 
 #include "SceneManager/SceneManager.h"
 #include "SceneManager/Scene/DebugScene.h"
@@ -33,7 +33,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SoundPlayer::GetInstance();										//サウンドプレイヤーの起動
 
 
-	AbstractScene* firstScene = new Title();						//FirstSceneの作成
+	AbstractScene* firstScene = new InputRanking();						//FirstSceneの作成
 
 	SceneManager* sceneManager = SceneManager::Create(firstScene);	//シーンマネージャーの起動
 

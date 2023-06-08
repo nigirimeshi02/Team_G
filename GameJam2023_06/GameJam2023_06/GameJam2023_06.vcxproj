@@ -147,6 +147,7 @@
     <ClCompile Include="End.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Food.cpp" />
+    <ClCompile Include="InputRanking.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="SceneManager\Scene\ResultScene.cpp" />
@@ -177,8 +178,10 @@
     <ClInclude Include="End.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Food.h" />
+    <ClInclude Include="InputRanking.h" />
     <ClInclude Include="ObstacleManager.h" />
     <ClInclude Include="Location.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="SceneManager\Scene\ResultScene.h" />
     <ClInclude Include="System\PadInput\PadInput.h" />
@@ -200,6 +203,9 @@
     <Image Include="Images\cursor.png" />
     <Image Include="Images\katana.png" />
     <Image Include="Images\Title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameJam2023_06.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
