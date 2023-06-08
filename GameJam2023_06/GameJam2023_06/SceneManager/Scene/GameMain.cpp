@@ -1,6 +1,7 @@
 #include "GameMain.h"
 #include "../../Ranking.h"
 
+#include "../../System/SoundPlayer/SoundPlayer.h"
 #include "DxLib.h"
 
 //int sceneCHG = false;
@@ -11,8 +12,15 @@ GameMain::GameMain()
 {
 	player = new Player();
 	obstacleManager = new ObstacleManager();
+	ui = new UI();
+	ui->SetLife(player->GetLife());
+	ui->SetScore(&score);
 
 	score = 0;
+
+	gameMainBGM = SoundPlayer::GetBGM("GameMain");
+
+	SoundPlayer::PlayBGM(gameMainBGM);
 }
 
 /*
@@ -30,7 +38,7 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
-	player->PlayerControl();
+	player->Update();
 	obstacleManager->Update();
 	CheckHit();
 
@@ -45,6 +53,8 @@ void GameMain::Draw()const
 	obstacleManager->Draw();
 
 	player->DrawPlayer();
+
+	ui->Draw();
 }
 
 /*
@@ -60,6 +70,7 @@ void GameMain::CheckHit()
 	//降ってくるものとの当たり判定
 	for (ObstacleBase* obstacle : obstacles)
 	{
+		// プレイヤーの攻撃との当たり判定
 		if (attack != nullptr &&		//プレイヤーが攻撃しているか？
 			obstacle->GetIsShow() &&	//対象のものが見えている(当たり判定を取る状態)か？
 			attack->HitCheck(obstacle))	//当たっているか？
@@ -67,18 +78,62 @@ void GameMain::CheckHit()
 			obstacle->ToggleIsShow();		//見えなくする 
 			// TODO:↑余裕があれば壊れる動き付けるため、ToggleIsBrokenにする
 			score += obstacle->GetScore();	//スコア加算
-			
-			/*Enemy* buf = dynamic_cast<Enemy*>(obstacle);
-			if (buf != nullptr)
+			if (dynamic_cast<Bomb*>(obstacle) != nullptr)
 			{
-				buf->Test();
-			}*/
+				player->HitDamage();
+			}
 		}
 		
-		if (obstacle->GetIsShow() &&
-			player->HitCheck(obstacle))
+		// プレイヤー本体との当たり判定
+		if (obstacle->GetIsShow() &&					//対象のものが見えている(当たり判定を取る状態)か？
+			player->HitCheck(obstacle))					//当たっているか
 		{
-			obstacle->ToggleIsShow();
+			if (dynamic_cast<Food*>(obstacle) != nullptr)	//食べ物か？
+			{
+				score += obstacle->GetScore();
+				obstacle->ToggleIsShow();
+			}
+			else if (player->GetIsInvincible() != true)
+			{
+				player->HitDamage();
+				if (dynamic_cast<Enemy*>(obstacle) != nullptr)	//エネミーか？(消えないもの？)
+				{
+					score += obstacle->GetScore() * -0.2;  //減算用
+				}
+				else											//それ以外（爆弾）の場合
+				{
+					score += obstacle->GetScore();
+					obstacle->ToggleIsShow();					//消す
+				}
+
+			}
+
 		}
+		
 	}
 }
+
+/*
+* 当たったオブジェクトの種類のチェック
+* 種類に応じた処理
+*/
+void GameMain::CheckType(ObstacleBase* obstacle)
+{
+	Enemy* enemy = dynamic_cast<Enemy*>(obstacle);
+	if (enemy != nullptr)
+	{
+		return ;
+	}
+	
+	Bomb* bomb = dynamic_cast<Bomb*>(obstacle);
+	if (bomb != nullptr)
+	{
+		return ;
+	}
+	
+	Food* food = dynamic_cast<Food*>(obstacle);
+	if (food != nullptr)
+	{
+		return ;
+	}
+} //TODO: 使う？？？？

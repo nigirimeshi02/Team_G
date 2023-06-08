@@ -5,10 +5,14 @@
 #include"System/PadInput/PadInput.h"
 #include"System/SoundPlayer/SoundPlayer.h"
 #include "System/KeyManager/KeyManager.h"
+#include "SceneManager/Scene/GameMain.h"
 
 Title::Title()
 {
 	TitleBGM = SoundPlayer::GetBGM("Title_BGM");
+	Cursor_Move = SoundPlayer::GetSE("Cursor_Move");
+	Cursor_Enter = SoundPlayer::GetSE("Cursor_Enter");
+	Cursor_Cancel = SoundPlayer::GetSE("Cursor_Canccel");
 	TitleImage = LoadGraph("Images/Title.png");
 	cursor = LoadGraph("Images/cursor.png");
 	interval = 0;
@@ -23,11 +27,12 @@ AbstractScene* Title::Update()
 	JoyPadY = PAD_INPUT::GetLStick().y;
 
 	if (JoyPadY > MARGIN && interval >= 30) {
+		SoundPlayer::PlaySE(Cursor_Move, FALSE);
 		select--;
 		interval = 0;
 	}
 	else if (JoyPadY < -MARGIN && interval >= 30) {
-	
+		SoundPlayer::PlaySE(Cursor_Move, FALSE);
 		select++;
 		interval = 0;
 	}
@@ -43,8 +48,9 @@ AbstractScene* Title::Update()
 
 	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_B) && interval >= 30) {
 		
+		SoundPlayer::PlaySE(Cursor_Enter, TRUE);
 		//各シーン
-		//if (TITLE_MENU::START == Menu_Number) return new GameMain(); 
+		if (TITLE_MENU::START == Menu_Number) return new GameMain(); 
 		//if (TITLE_MENU::RANKING == Menu_Number)return new Ranking(); 
 		//if (TITLE_MENU::END == Menu_Number)return new End();
 		
@@ -80,5 +86,6 @@ void Title::Draw()const
 
 	//エンド
 	DrawFormatString(558, 540, 0x007f00, "End");
-	
+
+	SetFontSize(16);
 }

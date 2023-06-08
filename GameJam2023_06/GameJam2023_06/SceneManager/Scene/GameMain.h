@@ -2,8 +2,8 @@
 #include "../../common.h"
 #include "../AbstractScene.h"
 #include "../../ObstacleManager.h"
-#include "../../SlashAction.h"
-#include"../../Player.h"
+#include "../../Player.h"
+#include "../../UI.h"
 
 class GameMain :
     public AbstractScene
@@ -23,9 +23,12 @@ public:
 private:
 	ObstacleManager* obstacleManager;
 	Player* player;
+	UI* ui;
 
+	int gameMainBGM;
 	int score;
 public:
 	void CheckHit();	//当たり判定
+	void CheckType(ObstacleBase*);	//当たったオブジェクトの種類のチェック,種類に応じた処理
 };
 

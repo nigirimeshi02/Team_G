@@ -30,7 +30,7 @@ DebugScene::~DebugScene()
 */
 AbstractScene* DebugScene::Update()
 {
-	player->PlayerControl();
+	player->Update();
 	return this;
 }
 

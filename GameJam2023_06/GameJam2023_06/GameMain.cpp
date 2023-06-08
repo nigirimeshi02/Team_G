@@ -3,9 +3,9 @@
 #include"System/SoundPlayer/SoundPlayer.h"
 GameMain::GameMain()
 {
-	TitleBGM = SoundPlayer::GetBGM("BGM");
+	MainBGM = SoundPlayer::GetBGM("GameMain");
 
-	SoundPlayer::PlayBGM(TitleBGM);
+	SoundPlayer::PlayBGM(MainBGM);
 }
 AbstractScene* GameMain::Update() {
 	int nInt;
