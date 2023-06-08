@@ -84,6 +84,12 @@ void Title::Draw()const
 	DrawFormatString(412, D_SCREEN_HEIGHT / 5+4, 0x000000, "刃舞闘");  //下
 	DrawFormatString(412, D_SCREEN_HEIGHT / 5, 0xff0000, "刃舞闘");  //
 
+	SetFontSize(30);
+	//タイトル名
+	DrawFormatString(537, D_SCREEN_HEIGHT / 5 - 15, 0x000000, "は　ば　と　う");  //
+	DrawFormatString(535, D_SCREEN_HEIGHT / 5 - 13, 0x000000, "は　ば　と　う");  //
+	DrawFormatString(535, D_SCREEN_HEIGHT / 5 - 15, 0xff0000, "は　ば　と　う");  //
+
 
 	SetFontSize(65);
 	//スタート

@@ -149,6 +149,7 @@
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
     <ClCompile Include="Result.cpp" />
+    <ClCompile Include="SceneManager\Scene\ResultScene.cpp" />
     <ClCompile Include="System\PadInput\PadInput.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Ranking.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="ObstacleManager.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="Result.h" />
+    <ClInclude Include="SceneManager\Scene\ResultScene.h" />
     <ClInclude Include="System\PadInput\PadInput.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ranking.h" />

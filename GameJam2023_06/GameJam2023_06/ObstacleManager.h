@@ -32,6 +32,7 @@ private:
 	vector<ObstacleBase*> obstacles;
 	int frameCount;
 	int unavailableLane[2];
+	int avoidCount;
 
 public:
 	void CreateObstacle(int pattern);	//áŠQ•¨‚Ì¶¬
@@ -46,5 +47,7 @@ public:
 	{
 		return obstacles;
 	}
+
+	const int* GetCount()const { return &avoidCount; }
 };
 
