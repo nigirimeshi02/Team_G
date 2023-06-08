@@ -9,10 +9,14 @@ Player::Player()
 	location.x = 600;
 	location.y = 500;
 	speed = 0;
-	imgflg = 0;
+	imageCnt = 0;
 	life = 3;
 	JoyPadX = 128;
-	atkflg = FALSE;
+	atkFlg = FALSE;
+	invincibleTime = 2;
+	IsInvincible = FALSE;
+	fpsCnt = 0;
+	blinkFlg = FALSE;
 
 	PlayerImage = LoadGraph("images/player.png");
 	PlayerLeftRunImage = LoadGraph("images/player_left_run.png");
@@ -29,16 +33,16 @@ Player::~Player()
 	}
 }
 
-void Player::PlayerControl()
+void Player::Update()
 {
 	JoyPadX = PAD_INPUT::GetLStick().x;
-	
+	fpsCnt++;
 
 	///////////////////
 	// パッド
 	//左
 	if (JoyPadX < -MARGIN && JoyPadX >= -MARGIN * 4 - 1) {
-		imgflg = 1;
+		imageCnt = 1;
 
 		if (PlayerLimit() == 0) {
 			if (speed < WALK_SPEED * -1) {
@@ -55,7 +59,7 @@ void Player::PlayerControl()
 	}
 	//右
 	else if (JoyPadX > MARGIN && JoyPadX <= MARGIN * 4) {
-		imgflg = 2;
+		imageCnt = 2;
 
 		if (PlayerLimit() == 0) {
 			if (speed > WALK_SPEED) {
@@ -73,7 +77,7 @@ void Player::PlayerControl()
 	else if (JoyPadX <= MARGIN && -MARGIN <= JoyPadX) {
 		if (PlayerLimit() == 0) {
 			speed = 0;
-			imgflg = 0;
+			imageCnt = 0;
 		}
 	}
 
@@ -81,34 +85,52 @@ void Player::PlayerControl()
 		attack == nullptr)
 	{
 		attack = new Attack((int)location.x, (int)location.y);
-		atkflg = TRUE;
+		atkFlg = TRUE;
 	}
 
-	if (atkflg == TRUE) {
+	if (atkFlg == TRUE) {
 		attack->Update();
 		if (attack->GetIsAttackEnd() == TRUE) {
 			delete attack;
 			attack = nullptr;
-			atkflg = FALSE;
+			atkFlg = FALSE;
 		}
 	}
+
+	if (IsInvincible == TRUE)
+	{
+		if (invincibleTime > 0) {
+			invincibleTime--;
+			if (fpsCnt % 24 == 0) {
+				blinkFlg = TRUE;
+			}
+			else {
+				blinkFlg = FALSE;
+			}
+		}
+		else {
+			IsInvincible = FALSE;
+			blinkFlg = FALSE;
+		}
+	}	
+
 }
 
 void Player::DrawPlayer()const
 {
 	DrawFormatString(0, 0, 0xffffff, "%d", JoyPadX);
-	if (imgflg == 0) {
-		if (speed == 0) {
+	if (imageCnt == 0) {
+		if (speed == 0 && blinkFlg == FALSE) {
 			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerImage, TRUE);
 		}
 	}
-	if (imgflg == 1) {
-		if (speed > -6) {
+	if (imageCnt == 1) {
+		if (speed > -6 && blinkFlg == FALSE) {
 			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerLeftRunImage, TRUE);
 		}
 	}
-	if (imgflg == 2) {
-		if (speed < 6) {
+	if (imageCnt == 2) {
+		if (speed < 6 && blinkFlg == FALSE) {
 			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerRightRunImage, TRUE);
 		}
 	}
@@ -133,10 +155,10 @@ int  Player::PlayerLimit()
 		location.x = MOVE_RIGHT_LIMIT;
 		return 1;
 	}
-	else if (atkflg == true)
+	else if (atkFlg == true)
 	{
 		speed = 0;
-		imgflg = 0;
+		imageCnt = 0;
 		return 1;
 	}
 	else
@@ -144,4 +166,16 @@ int  Player::PlayerLimit()
 		location.x += speed;
 		return 0;
 	}
+}
+
+void Player::HitDamage()
+{
+	life--;
+	invincibleTime = INVINCIBLE_TIME * 60;
+	IsInvincible = TRUE;
+}
+
+bool Player::GetIsInvincible()
+{
+	return Player::IsInvincible;
 }
