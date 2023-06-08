@@ -25,6 +25,9 @@ private:
 	int PlayerLeftRunImage;	//プレイヤーの左へ移動している画像
 	int PlayerRightRunImage;//プレイヤーの右へ移動している画像
 
+	int Damege_SE;
+	int Attack_SE;
+
 	Attack* attack;
 
 public:
