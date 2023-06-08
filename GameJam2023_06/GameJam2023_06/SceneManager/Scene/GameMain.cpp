@@ -152,6 +152,7 @@ void GameMain::CheckHit()
 				player->HitDamage();
 				if (dynamic_cast<Enemy*>(obstacle) != nullptr)	//エネミーか？(消えないもの？)
 				{
+					player->HitEnemy();
 					score += (int)(obstacle->GetScore() * -0.2);  //減算用
 				}
 				else											//それ以外（爆弾）の場合

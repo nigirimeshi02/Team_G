@@ -19,6 +19,7 @@ Player::Player()
 	fpsCnt = 0;
 	blinkFlg = FALSE;
 
+	SlashImage = LoadGraph("images/slash.png");
 	PlayerImage = LoadGraph("images/player.png");
 	PlayerLeftRunImage = LoadGraph("images/player_left_run.png");
 	PlayerRightRunImage = LoadGraph("images/player_right_run.png");
@@ -113,8 +114,14 @@ void Player::Update()
 			IsInvincible = FALSE;
 			blinkFlg = FALSE;
 		}
-	}	
+	}
 
+	if (SlashFlg == TRUE)
+	{
+		if (Slashtime-- <= 0) {
+			SlashFlg = FALSE;
+		}
+	}
 }
 
 void Player::DrawPlayer()const
@@ -141,6 +148,9 @@ void Player::DrawPlayer()const
 		attack->Draw();
 	}
 	
+	if (SlashFlg == TRUE) {
+		DrawGraph(location.x - 48, location.y - 48, SlashImage, TRUE);
+	}
 }
 
 int  Player::PlayerLimit()
@@ -179,4 +189,10 @@ void Player::HitDamage()
 bool Player::GetIsInvincible()
 {
 	return Player::IsInvincible;
+}
+
+void Player::HitEnemy()
+{
+	SlashFlg = TRUE;
+	Slashtime = 20;
 }

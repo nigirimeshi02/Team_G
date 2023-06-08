@@ -20,10 +20,13 @@ private:
 	bool IsInvincible;		//無敵かどうか	FALSE:なし	TRUE:無敵
 	int fpsCnt;
 	bool blinkFlg;			//点滅フラグ	FALSE:表示	TRUE:消す
+	bool SlashFlg;
+	int Slashtime;
 
 	int PlayerImage;		//プレイヤーの止まっている画像
 	int PlayerLeftRunImage;	//プレイヤーの左へ移動している画像
 	int PlayerRightRunImage;//プレイヤーの右へ移動している画像
+	int SlashImage;
 
 	int Damege_SE;
 	int Attack_SE;
@@ -38,6 +41,7 @@ public:
 	int PlayerLimit();
 	Attack* GetAttack()const { return attack; }
 	void HitDamage();
+	void HitEnemy();
 	bool GetIsInvincible();
 	const int* GetLife()const { return &life; }
 };
