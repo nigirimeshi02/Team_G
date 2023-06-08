@@ -26,5 +26,6 @@ private:
 	int score;
 public:
 	void CheckHit();	//当たり判定
+	void CheckType(ObstacleBase*);	//当たったオブジェクトの種類のチェック,種類に応じた処理
 };
 
