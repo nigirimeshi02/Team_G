@@ -84,7 +84,7 @@ void Player::Update()
 		}
 	}
 
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B) &&
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) &&
 		attack == nullptr)
 	{
 		SoundPlayer::PlaySE(Attack_SE, FALSE);
