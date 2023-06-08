@@ -1,4 +1,5 @@
 #include<DxLib.h>
+#include"System/SoundPlayer/SoundPlayer.h"
 #include"System/KeyManager/KeyManager.h"
 #include"system/PadInput/PadInput.h"
 #include"Player.h"
@@ -21,6 +22,8 @@ Player::Player()
 	PlayerImage = LoadGraph("images/player.png");
 	PlayerLeftRunImage = LoadGraph("images/player_left_run.png");
 	PlayerRightRunImage = LoadGraph("images/player_right_run.png");
+	Damege_SE = SoundPlayer::GetSE("damege");
+	Attack_SE = SoundPlayer::GetSE("Attack");
 
 	attack = nullptr;
 }
@@ -84,6 +87,7 @@ void Player::Update()
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B) &&
 		attack == nullptr)
 	{
+		SoundPlayer::PlaySE(Attack_SE, FALSE);
 		attack = new Attack((int)location.x, (int)location.y);
 		atkFlg = TRUE;
 	}
@@ -167,6 +171,7 @@ int  Player::PlayerLimit()
 
 void Player::HitDamage()
 {
+	SoundPlayer::PlaySE(Damege_SE, FALSE);
 	life--;
 	invincibleTime = INVINCIBLE_TIME * 60;
 	IsInvincible = TRUE;

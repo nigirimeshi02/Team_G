@@ -26,6 +26,8 @@ private:
 	UI* ui;
 
 	int gameMainBGM;
+	int boomSE;
+	int eatSE;
 	int imageBack;
 
 	int score;

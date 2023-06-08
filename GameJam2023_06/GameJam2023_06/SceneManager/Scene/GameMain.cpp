@@ -20,6 +20,8 @@ GameMain::GameMain()
 	ui->SetScore(&score);
 
 	gameMainBGM = SoundPlayer::GetBGM("GameMain");
+	boomSE = SoundPlayer::GetSE("Boom");
+	eatSE = SoundPlayer::GetSE("eat");
 	imageBack = LoadGraph("images/main.png");
 	SoundPlayer::PlayBGM(gameMainBGM);
 
@@ -121,6 +123,7 @@ void GameMain::CheckHit()
 			score += obstacle->GetScore();	//スコア加算
 			if (dynamic_cast<Bomb*>(obstacle) != nullptr)
 			{
+				SoundPlayer::PlaySE(boomSE, FALSE);
 				player->HitDamage();
 			}
 			if (dynamic_cast<Bomb*>(obstacle) != nullptr)
@@ -135,6 +138,7 @@ void GameMain::CheckHit()
 		{
 			if (dynamic_cast<Food*>(obstacle) != nullptr)	//食べ物か？
 			{
+				SoundPlayer::PlaySE(eatSE, FALSE);
 				eatCount++;
 				score += obstacle->GetScore();
 				obstacle->ToggleIsShow();
@@ -150,6 +154,7 @@ void GameMain::CheckHit()
 				{
 					if(obstacle != nullptr)
 					{
+						SoundPlayer::PlaySE(boomSE, FALSE);
 						score += obstacle->GetScore();
 						obstacle->ToggleIsShow();					//消す
 					}
