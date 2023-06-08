@@ -5,8 +5,7 @@
 #include "../../Player.h"
 #include "../../UI.h"
 
-class GameMain :
-    public AbstractScene
+class GameMain :public AbstractScene
 {
 
 public:
@@ -27,6 +26,8 @@ private:
 	UI* ui;
 
 	int gameMainBGM;
+	int boomSE;
+	int eatSE;
 	int imageBack;
 
 	int score;

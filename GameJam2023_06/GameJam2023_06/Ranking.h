@@ -28,6 +28,7 @@ private:
 	
 	int RankingImg;//ランキングイメージ
 	bool sceneCHG;//シーン変更地
+	int Cursor_Cancel;
 	
 };
 

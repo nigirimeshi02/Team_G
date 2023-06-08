@@ -1,19 +1,18 @@
 #include "Title.h"
+#include "SceneManager/Scene/GameMain.h"
+#include "Ranking.h"
+#include "End.h"
 #include "common.h"
 #include "DxLib.h"
-#include "Ranking.h"
 #include"System/PadInput/PadInput.h"
 #include"System/SoundPlayer/SoundPlayer.h"
 #include "System/KeyManager/KeyManager.h"
-#include "SceneManager/Scene/GameMain.h"
-#include"End.h"
 
 Title::Title()
 {
 	TitleBGM = SoundPlayer::GetBGM("Title_BGM");
 	Cursor_Move = SoundPlayer::GetSE("Cursor_Move");
 	Cursor_Enter = SoundPlayer::GetSE("Cursor_Enter");
-	Cursor_Cancel = SoundPlayer::GetSE("Cursor_Canccel");
 	TitleImage = LoadGraph("Images/Title.png");
 	cursor = LoadGraph("Images/cursor.png");
 	interval = 0;
@@ -54,8 +53,8 @@ AbstractScene* Title::Update()
 		SoundPlayer::PlaySE(Cursor_Enter, TRUE);
 		//各シーン
 		if (TITLE_MENU::START == Menu_Number) return new GameMain(); 
-		//if (TITLE_MENU::RANKING == Menu_Number)return new Ranking(); 
-		//if (TITLE_MENU::END == Menu_Number)return new End();
+		if (TITLE_MENU::RANKING == Menu_Number)return new Ranking(); 
+		if (TITLE_MENU::END == Menu_Number)return new End();
 		
 		interval = 0;
 	}
@@ -83,6 +82,12 @@ void Title::Draw()const
 	DrawFormatString(416, D_SCREEN_HEIGHT / 5, 0x000000, "刃舞闘");  //右
 	DrawFormatString(412, D_SCREEN_HEIGHT / 5+4, 0x000000, "刃舞闘");  //下
 	DrawFormatString(412, D_SCREEN_HEIGHT / 5, 0xff0000, "刃舞闘");  //
+
+	SetFontSize(30);
+	//タイトル名
+	DrawFormatString(537, D_SCREEN_HEIGHT / 5 - 15, 0x000000, "は　ば　と　う");  //
+	DrawFormatString(535, D_SCREEN_HEIGHT / 5 - 13, 0x000000, "は　ば　と　う");  //
+	DrawFormatString(535, D_SCREEN_HEIGHT / 5 - 15, 0xff0000, "は　ば　と　う");  //
 
 
 	SetFontSize(65);
