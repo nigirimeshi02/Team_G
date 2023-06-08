@@ -3,7 +3,13 @@
 #include "SceneManager/AbstractScene.h"
 
 class GameMain : public AbstractScene {
+
+private:
+	int MainBGM;
+
 public:
+	// インストラクタ
+	GameMain();
 	// デストラクタ
 	virtual ~GameMain() {};
 
