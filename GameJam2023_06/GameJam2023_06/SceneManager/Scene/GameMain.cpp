@@ -1,6 +1,8 @@
 #include "GameMain.h"
 #include "../../Ranking.h"
 
+#include "../../Title.h"
+#include "ResultScene.h"
 #include "../../System/SoundPlayer/SoundPlayer.h"
 #include "DxLib.h"
 #include "../../System/KeyManager/KeyManager.h"
@@ -11,17 +13,23 @@
 */
 GameMain::GameMain()
 {
+	mScene = nullptr;
 	player = new Player();
 	obstacleManager = new ObstacleManager();
 	ui = new UI();
 	ui->SetLife(player->GetLife());
 	ui->SetScore(&score);
 
-	score = 0;
-
 	gameMainBGM = SoundPlayer::GetBGM("GameMain");
-
+	imageBack = LoadGraph("images/main.png");
 	SoundPlayer::PlayBGM(gameMainBGM);
+
+	score = 0;
+	killCount = 0;
+	eatCount = 0;
+
+	frameCount = 0;
+	isGameEnd = false;
 }
 
 /*
@@ -39,15 +47,35 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
+	if (mScene != nullptr)
+	{
+		mScene = mScene->Update();
+		if (mScene == nullptr)
+		{
+			delete mScene;
+			return new Title();
+		}
+	}
+
+	if (isGameEnd)
+	{
+		frameCount--;
+		if (frameCount <= 0)
+		{
+			mScene = new ResultScene();
+		}
+		return this;		//以降の処理を止める
+	}
+
 	player->Update();
 	obstacleManager->Update();
 	CheckHit();
 
-	if (KeyManager::OnKeyClicked(KEY_INPUT_S))
+	if (*(player->GetLife()) == 0)
 	{
-		return new Ranking();
+		isGameEnd = true;
+		frameCount = 2 * 60;
 	}
-
 	return this;
 }
 
@@ -56,11 +84,18 @@ AbstractScene* GameMain::Update()
 */
 void GameMain::Draw()const
 {
+	DrawGraph(0, 0, imageBack,TRUE);
+
 	obstacleManager->Draw();
 
 	player->DrawPlayer();
 
 	ui->Draw();
+
+	if (mScene != nullptr)
+	{
+		mScene->Draw();
+	}
 }
 
 /*
@@ -76,6 +111,7 @@ void GameMain::CheckHit()
 	//降ってくるものとの当たり判定
 	for (ObstacleBase* obstacle : obstacles)
 	{
+
 		// プレイヤーの攻撃との当たり判定
 		if (attack != nullptr &&		//プレイヤーが攻撃しているか？
 			obstacle->GetIsShow() &&	//対象のものが見えている(当たり判定を取る状態)か？
@@ -88,6 +124,10 @@ void GameMain::CheckHit()
 			{
 				player->HitDamage();
 			}
+			if (dynamic_cast<Bomb*>(obstacle) != nullptr)
+			{
+				killCount++;
+			}
 		}
 		
 		// プレイヤー本体との当たり判定
@@ -96,6 +136,7 @@ void GameMain::CheckHit()
 		{
 			if (dynamic_cast<Food*>(obstacle) != nullptr)	//食べ物か？
 			{
+				eatCount++;
 				score += obstacle->GetScore();
 				obstacle->ToggleIsShow();
 			}
@@ -104,12 +145,15 @@ void GameMain::CheckHit()
 				player->HitDamage();
 				if (dynamic_cast<Enemy*>(obstacle) != nullptr)	//エネミーか？(消えないもの？)
 				{
-					score += obstacle->GetScore() * -0.2;  //減算用
+					score += (int)(obstacle->GetScore() * -0.2);  //減算用
 				}
 				else											//それ以外（爆弾）の場合
 				{
-					score += obstacle->GetScore();
-					obstacle->ToggleIsShow();					//消す
+					if(obstacle != nullptr)
+					{
+						score += obstacle->GetScore();
+						obstacle->ToggleIsShow();					//消す
+					}
 				}
 
 			}
@@ -118,28 +162,3 @@ void GameMain::CheckHit()
 		
 	}
 }
-
-/*
-* 当たったオブジェクトの種類のチェック
-* 種類に応じた処理
-*/
-void GameMain::CheckType(ObstacleBase* obstacle)
-{
-	Enemy* enemy = dynamic_cast<Enemy*>(obstacle);
-	if (enemy != nullptr)
-	{
-		return ;
-	}
-	
-	Bomb* bomb = dynamic_cast<Bomb*>(obstacle);
-	if (bomb != nullptr)
-	{
-		return ;
-	}
-	
-	Food* food = dynamic_cast<Food*>(obstacle);
-	if (food != nullptr)
-	{
-		return ;
-	}
-} //TODO: 使う？？？？

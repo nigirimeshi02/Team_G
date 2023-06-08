@@ -7,6 +7,7 @@
 #include "SceneManager/Scene/GameMain.h"
 #include "System/SoundPlayer/SoundPlayer.h"
 #include "Title.h"
+#include "End.h"
 #include"System/PadInput/PadInput.h"
 
 /***********************************************
