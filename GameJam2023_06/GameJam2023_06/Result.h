@@ -1,11 +1,15 @@
 #pragma once
-class Result
+#include "SceneManager/AbstractScene.h"
+
+
+class Result :public AbstractScene
 {
 public:
 	Result(int score, int value);
 	~Result();
 
-	void Update();
+	AbstractScene* Update()override;
+	//void Update();
 	void Draw();
 
 private:

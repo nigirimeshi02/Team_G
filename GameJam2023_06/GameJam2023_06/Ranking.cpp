@@ -32,7 +32,7 @@ Ranking::~Ranking()
 
 AbstractScene* Ranking::Update()
 {
-	if (KeyManager::OnKeyClicked(KEY_INPUT_RETURN))
+	if (KeyManager::OnKeyClicked(KEY_INPUT_A))
 	{
 		return new GameMain();
 	}
