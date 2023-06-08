@@ -50,10 +50,10 @@ void End::Draw()const {
 
 	DrawStringToHandle(470, 1290 - MoveString * MOVE_SPEED, "画像素材", 0xff0000, EndFont1);
 
-	DrawStringToHandle(485, 1390 - MoveString * MOVE_SPEED, "イラスト屋", 0x000000, EndFont2);
-	DrawStringToHandle(520, 1450 - MoveString * MOVE_SPEED, "illustAC", 0x000000, EndFont2);
-	DrawStringToHandle(535, 1510 - MoveString * MOVE_SPEED, "illust8", 0x000000, EndFont2);
-	DrawStringToHandle(520, 1570 - MoveString * MOVE_SPEED, "SVG Silh", 0x000000, EndFont2);
+	DrawStringToHandle(485, 1390 - MoveString * MOVE_SPEED, "いらすとや", 0x000000, EndFont2);
+	DrawStringToHandle(485, 1450 - MoveString * MOVE_SPEED, "みんちりえ", 0x000000, EndFont2);
+	DrawStringToHandle(415, 1510 - MoveString * MOVE_SPEED, "フレームぽけっと", 0x000000, EndFont2);
+	DrawStringToHandle(520, 1570 - MoveString * MOVE_SPEED, "illustAC", 0x000000, EndFont2);
 
 	DrawStringToHandle(340, 2300 - MoveString * (MOVE_SPEED + 1.5), "Thank You For ", 0x000000, EndFont3);
 	DrawStringToHandle(310, 2400 - MoveString * (MOVE_SPEED + 1.5), "Playing Game !!", 0x000000, EndFont3);
