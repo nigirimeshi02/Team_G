@@ -28,7 +28,7 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
-	player->PlayerControl();
+	player->Update();
 	obstacleManager->Update();
 	CheckHit();
 
