@@ -9,7 +9,7 @@ ObstacleManager::ObstacleManager()
 	frameCount = 0;
 	unavailableLane[0] = GetRand(GetRand(D_LANE_MAX - 1));
 	unavailableLane[1] = GetRand(GetRand(D_LANE_MAX - 1));
-	
+	avoidCount = 0;
 }
 
 /*
@@ -145,9 +145,14 @@ void ObstacleManager::DeleteObstacles()
 {
 	for (int i = 0; i < obstacles.size(); i++)
 	{
-		if (obstacles[i]->GetIsShow() == false ||
-			obstacles[i]->GetIsScreenOut() == true)
+		if (obstacles[i]->GetIsShow() == false)
 		{
+			delete obstacles[i];
+			obstacles.erase(obstacles.begin() + i);
+		}
+		else if (obstacles[i]->GetIsScreenOut() == true)
+		{
+			avoidCount++;
 			delete obstacles[i];
 			obstacles.erase(obstacles.begin() + i);
 		}

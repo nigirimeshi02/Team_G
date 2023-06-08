@@ -2,6 +2,7 @@
 #include "../../Ranking.h"
 
 #include "../../Title.h"
+#include "ResultScene.h"
 #include "../../System/SoundPlayer/SoundPlayer.h"
 #include "DxLib.h"
 
@@ -11,18 +12,20 @@
 */
 GameMain::GameMain()
 {
+	mScene = nullptr;
 	player = new Player();
 	obstacleManager = new ObstacleManager();
 	ui = new UI();
 	ui->SetLife(player->GetLife());
 	ui->SetScore(&score);
 
-	score = 0;
-
 	gameMainBGM = SoundPlayer::GetBGM("GameMain");
 	imageBack = LoadGraph("images/main.png");
-
 	SoundPlayer::PlayBGM(gameMainBGM);
+
+	score = 0;
+	killCount = 0;
+	eatCount = 0;
 
 	frameCount = 0;
 	isGameEnd = false;
@@ -43,14 +46,24 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
+	if (mScene != nullptr)
+	{
+		mScene = mScene->Update();
+		if (mScene == nullptr)
+		{
+			delete mScene;
+			return new Title();
+		}
+	}
+
 	if (isGameEnd)
 	{
 		frameCount--;
 		if (frameCount <= 0)
 		{
-			return new Title();
+			mScene = new ResultScene();
 		}
-		return this;
+		return this;		//以降の処理を止める
 	}
 
 	player->Update();
@@ -77,6 +90,11 @@ void GameMain::Draw()const
 	player->DrawPlayer();
 
 	ui->Draw();
+
+	if (mScene != nullptr)
+	{
+		mScene->Draw();
+	}
 }
 
 /*
@@ -105,6 +123,10 @@ void GameMain::CheckHit()
 			{
 				player->HitDamage();
 			}
+			if (dynamic_cast<Bomb*>(obstacle) != nullptr)
+			{
+				killCount++;
+			}
 		}
 		
 		// プレイヤー本体との当たり判定
@@ -113,6 +135,7 @@ void GameMain::CheckHit()
 		{
 			if (dynamic_cast<Food*>(obstacle) != nullptr)	//食べ物か？
 			{
+				eatCount++;
 				score += obstacle->GetScore();
 				obstacle->ToggleIsShow();
 			}
@@ -138,28 +161,3 @@ void GameMain::CheckHit()
 		
 	}
 }
-
-/*
-* 当たったオブジェクトの種類のチェック
-* 種類に応じた処理
-*/
-void GameMain::CheckType(ObstacleBase* obstacle)
-{
-	Enemy* enemy = dynamic_cast<Enemy*>(obstacle);
-	if (enemy != nullptr)
-	{
-		return ;
-	}
-	
-	Bomb* bomb = dynamic_cast<Bomb*>(obstacle);
-	if (bomb != nullptr)
-	{
-		return ;
-	}
-	
-	Food* food = dynamic_cast<Food*>(obstacle);
-	if (food != nullptr)
-	{
-		return ;
-	}
-} //TODO: 使う？？？？

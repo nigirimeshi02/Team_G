@@ -101,11 +101,8 @@ void Player::Update()
 	{
 		if (invincibleTime > 0) {
 			invincibleTime--;
-			if (fpsCnt % 24 == 0) {
-				blinkFlg = TRUE;
-			}
-			else {
-				blinkFlg = FALSE;
+			if (fpsCnt % 15 == 0) {
+				blinkFlg = !blinkFlg;
 			}
 		}
 		else {

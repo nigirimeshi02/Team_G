@@ -1,6 +1,4 @@
 #include "Title.h"
-#include "GameMain.h"
-#include "rankin"
 #include "common.h"
 #include "DxLib.h"
 #include "Ranking.h"
@@ -54,7 +52,7 @@ AbstractScene* Title::Update()
 		//äeÉVÅ[Éì
 		if (TITLE_MENU::START == Menu_Number) return new GameMain(); 
 		//if (TITLE_MENU::RANKING == Menu_Number)return new Ranking(); 
-		if (TITLE_MENU::END == Menu_Number)return new End();
+		//if (TITLE_MENU::END == Menu_Number)return new End();
 		
 		interval = 0;
 	}
