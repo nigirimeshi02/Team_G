@@ -6,6 +6,7 @@
 #include "SceneManager/Scene/GameMain.h"
 #include "System/SoundPlayer/SoundPlayer.h"
 #include "Title.h"
+#include "End.h"
 #include"System/PadInput/PadInput.h"
 
 
@@ -32,7 +33,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SoundPlayer::GetInstance();										//サウンドプレイヤーの起動
 
 
-	AbstractScene* firstScene = new Title();						//FirstSceneの作成
+	AbstractScene* firstScene = new End();						//FirstSceneの作成
 
 	SceneManager* sceneManager = SceneManager::Create(firstScene);	//シーンマネージャーの起動
 
