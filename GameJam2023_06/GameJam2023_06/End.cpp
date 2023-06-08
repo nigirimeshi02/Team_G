@@ -23,17 +23,14 @@ End::~End()
 	DeleteFontToHandle(EndFont1);
 	DeleteFontToHandle(EndFont2);
 	DeleteFontToHandle(EndFont3);
-	//サウンドの削除
-	DeleteSoundMem(EndBGM);
-	DeleteSoundMem(EndSE);
 }
 
 AbstractScene* End::Update() {
 	if (WaitTime-- < 0) {
 		return nullptr;
 	}
-	if (++MoveString >= 200) {
-		MoveString = 200;
+	if (++MoveString >= 240) {
+		MoveString = 240;
 	}
 	return this;
 }
@@ -41,19 +38,23 @@ AbstractScene* End::Update() {
 void End::Draw()const {
 	//ゲーム終了画面
 	DrawGraph(0, 0, TitleImage, TRUE);
-	DrawStringToHandle(500, 680 - MoveString * MOVE_SPEED, "SE & BGM", 0x0000ff, EndFont1);
+	DrawStringToHandle(550, 680 - MoveString * MOVE_SPEED, "BGM", 0x0000ff, EndFont1);
 
-	DrawStringToHandle(540, 780 - MoveString * MOVE_SPEED, "OtoLogic", 0x000000, EndFont2);
-	DrawStringToHandle(515, 840 - MoveString * MOVE_SPEED, "無料効果音", 0x000000, EndFont2);
-	DrawStringToHandle(470, 900 - MoveString * MOVE_SPEED, "甘茶の音楽工房", 0x000000, EndFont2);
+	DrawStringToHandle(400, 780 - MoveString * MOVE_SPEED, "DOVA-SYNDROME", 0x000000, EndFont2);
 
-	DrawStringToHandle(505, 1050 - MoveString * MOVE_SPEED, "画像素材", 0xff0000, EndFont1);
+	DrawStringToHandle(560, 880 - MoveString * MOVE_SPEED, "SE", 0x0000ff, EndFont1);
 
-	DrawStringToHandle(510, 1150 - MoveString * MOVE_SPEED, "イラスト屋", 0x000000, EndFont2);
-	DrawStringToHandle(545, 1210 - MoveString * MOVE_SPEED, "illustAC", 0x000000, EndFont2);
-	DrawStringToHandle(560, 1270 - MoveString * MOVE_SPEED, "illust8", 0x000000, EndFont2);
-	DrawStringToHandle(545, 1330 - MoveString * MOVE_SPEED, "SVG Silh", 0x000000, EndFont2);
+	DrawStringToHandle(475, 980 - MoveString * MOVE_SPEED, "効果音ラボ", 0x000000, EndFont2);
+	DrawStringToHandle(475, 1040 - MoveString * MOVE_SPEED, "効果音工房", 0x000000, EndFont2);
+	DrawStringToHandle(400, 1100 - MoveString * MOVE_SPEED, "くつろぎスタジオ", 0x000000, EndFont2);
 
-	DrawStringToHandle(340, 2000 - MoveString * (MOVE_SPEED + 1.5), "Thank You For ", 0x000000, EndFont3);
-	DrawStringToHandle(310, 2100 - MoveString * (MOVE_SPEED + 1.5), "Playing Game !!", 0x000000, EndFont3);
+	DrawStringToHandle(470, 1290 - MoveString * MOVE_SPEED, "画像素材", 0xff0000, EndFont1);
+
+	DrawStringToHandle(485, 1390 - MoveString * MOVE_SPEED, "イラスト屋", 0x000000, EndFont2);
+	DrawStringToHandle(520, 1450 - MoveString * MOVE_SPEED, "illustAC", 0x000000, EndFont2);
+	DrawStringToHandle(535, 1510 - MoveString * MOVE_SPEED, "illust8", 0x000000, EndFont2);
+	DrawStringToHandle(520, 1570 - MoveString * MOVE_SPEED, "SVG Silh", 0x000000, EndFont2);
+
+	DrawStringToHandle(340, 2300 - MoveString * (MOVE_SPEED + 1.5), "Thank You For ", 0x000000, EndFont3);
+	DrawStringToHandle(310, 2400 - MoveString * (MOVE_SPEED + 1.5), "Playing Game !!", 0x000000, EndFont3);
 }
