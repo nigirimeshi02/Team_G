@@ -11,7 +11,7 @@ DebugScene::DebugScene()
 	//attack = new Attack();
 	box = new BoxCollider({300,250},{25,25});
 	player = new Player();
-	result = new Result(0,0);
+	//result = new Result(0,0);
 }
 
 /*

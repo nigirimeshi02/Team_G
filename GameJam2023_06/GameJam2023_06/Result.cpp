@@ -1,6 +1,8 @@
 #include<DxLib.h>
 #include"Result.h"
 #include"common.h"
+#include "Ranking.h"
+#include "System/KeyManager/KeyManager.h"
 
 Result::Result(int score, int value)
 {
@@ -16,9 +18,9 @@ Result::~Result()
 
 }
 
-void Result::Update()
+AbstractScene* Result::Update()
 {
-
+	return this;
 }
 
 void Result::Draw()

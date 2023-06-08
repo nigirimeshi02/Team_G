@@ -13,4 +13,13 @@
 #define D_GAME_SCREEN_LEFT (0)
 #define D_GAME_SCREEN_RIGHT (1280)
 #define D_GAME_SCREEN_UPPER (0)
+
+/******************************************
+* óÒãìå^ÇÃêÈåæ
+******************************************/
+enum mode {
+	TITLE,
+	RANKING,
+	MAIN,
+};
 #define D_GAME_SCREEN_FOOTER (D_SCREEN_HEIGHT - D_UI_BACK_HEIGHT)

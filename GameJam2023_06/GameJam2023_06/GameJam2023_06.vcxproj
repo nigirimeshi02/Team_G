@@ -151,6 +151,7 @@
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="System\PadInput\PadInput.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="SceneManager\Scene\GameMain.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneManager\AbstractScene.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Result.h" />
     <ClInclude Include="System\PadInput\PadInput.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Ranking.h" />
     <ClInclude Include="SceneManager\Scene\GameMain.h" />
     <ClInclude Include="SceneManager\AbstractScene.h" />
     <ClInclude Include="SceneManager\SceneManager.h" />

@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "common.h"
+#include "Ranking.h"
 
 #include "SceneManager/SceneManager.h"
 #include "SceneManager/Scene/DebugScene.h"
@@ -8,7 +9,6 @@
 #include "Title.h"
 #include "End.h"
 #include"System/PadInput/PadInput.h"
-
 
 /***********************************************
  * プログラムの開始
@@ -31,11 +31,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする
 
 	SoundPlayer::GetInstance();										//サウンドプレイヤーの起動
-
-
-	AbstractScene* firstScene = new End();						//FirstSceneの作成
-
+	AbstractScene* firstScene = new Title();						//FirstSceneの作成
 	SceneManager* sceneManager = SceneManager::Create(firstScene);	//シーンマネージャーの起動
+
 
 	// ゲームループ
 	while ((ProcessMessage() == 0) &&

@@ -1,7 +1,11 @@
 #include "GameMain.h"
+#include "../../Ranking.h"
+
 #include "../../Title.h"
 #include "../../System/SoundPlayer/SoundPlayer.h"
 #include "DxLib.h"
+
+//int sceneCHG = false;
 /*
 * コンストラクタ
 */
