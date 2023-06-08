@@ -5,8 +5,7 @@
 #include "../../Player.h"
 #include "../../UI.h"
 
-class GameMain :
-    public AbstractScene
+class GameMain :public AbstractScene
 {
 
 public:

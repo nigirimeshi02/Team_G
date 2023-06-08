@@ -1,13 +1,12 @@
 #include "Title.h"
-//#include "GameMain.h"
+#include "SceneManager/Scene/GameMain.h"
+#include "Ranking.h"
+#include "End.h"
 #include "common.h"
 #include "DxLib.h"
-#include "Ranking.h"
 #include"System/PadInput/PadInput.h"
 #include"System/SoundPlayer/SoundPlayer.h"
 #include "System/KeyManager/KeyManager.h"
-#include "SceneManager/Scene/GameMain.h"
-#include"End.h"
 
 Title::Title()
 {
