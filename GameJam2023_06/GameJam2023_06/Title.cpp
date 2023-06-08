@@ -1,4 +1,6 @@
 #include "Title.h"
+#include "GameMain.h"
+#include "rankin"
 #include "common.h"
 #include "DxLib.h"
 #include "Ranking.h"
@@ -6,6 +8,7 @@
 #include"System/SoundPlayer/SoundPlayer.h"
 #include "System/KeyManager/KeyManager.h"
 #include "SceneManager/Scene/GameMain.h"
+#include"End.h"
 
 Title::Title()
 {
@@ -19,6 +22,8 @@ Title::Title()
 	select = 0;
 	
 	SoundPlayer::PlayBGM(TitleBGM);
+	ChangeFont("HG行書体");
+	
 }
 
 AbstractScene* Title::Update()
@@ -72,19 +77,35 @@ void Title::Draw()const
 	//カーソル
 	DrawGraph(470, 370 + select * 71, cursor, TRUE);
 	
+	//DrawLine(D_SCREEN_WIDTH / 2, 0, D_SCREEN_WIDTH / 2, D_SCREEN_HEIGHT, 0xffffff);
+
+
+	SetFontSize(150);
+	//タイトル名
+	DrawFormatString(416, D_SCREEN_HEIGHT / 5, 0x000000, "刃舞闘");  //右
+	DrawFormatString(412, D_SCREEN_HEIGHT / 5+4, 0x000000, "刃舞闘");  //下
+	DrawFormatString(412, D_SCREEN_HEIGHT / 5, 0xff0000, "刃舞闘");  //
 
 
 	SetFontSize(65);
-	//タイトル名
-	DrawFormatString(558, D_SCREEN_HEIGHT / 5, 0xff0000, "Title");
-
 	//スタート
+	DrawFormatString(555, 400, 0xffffff, "Start");  //上 
+	DrawFormatString(561, 400, 0xffffff, "Start");  //下
+	DrawFormatString(558, 403, 0xffffff, "Start");  //右
+	DrawFormatString(558, 397, 0xffffff, "Start");  //左
 	DrawFormatString(558, 400, 0x007f00, "Start");
 
 	//ランキング
+	DrawFormatString(555, 470, 0xffffff, "Ranking");
+	DrawFormatString(561, 470, 0xffffff, "Ranking");
+	DrawFormatString(558, 473, 0xffffff, "Ranking");
+	DrawFormatString(558, 467, 0xffffff, "Ranking");
 	DrawFormatString(558, 470, 0x007f00, "Ranking");
-
 	//エンド
+	DrawFormatString(555, 540, 0xffffff, "End");
+	DrawFormatString(561, 540, 0xffffff, "End");
+	DrawFormatString(558, 543, 0xffffff, "End");
+	DrawFormatString(558, 537, 0xffffff, "End");
 	DrawFormatString(558, 540, 0x007f00, "End");
 
 	SetFontSize(16);
