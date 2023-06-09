@@ -121,7 +121,7 @@ void GameMain::Draw()const
 	if (CutInFlg == TRUE)
 	{
 		int ret = DrawStringToHandle(1200 - MoveString * MOVE_SPEED, 250, "よぉい", 0xffffff, CutInFont);
-		DrawStringToHandle(7610 - MoveString * (MOVE_SPEED + 15) , 250, "すたぁと", 0xff0000, CutInFont);
+		DrawStringToHandle(7620 - MoveString * (MOVE_SPEED + 15) , 250, "すたぁと", 0xff0000, CutInFont);
 
 	}
 
@@ -181,7 +181,7 @@ void GameMain::CheckHit()
 				if (dynamic_cast<Enemy*>(obstacle) != nullptr)	//エネミーか？(消えないもの？)
 				{
 					player->HitEnemy();
-					score += (int)(obstacle->GetScore() * -0.2);  //減算用
+					score += (int)(obstacle->GetScore() * -0.5);  //減算用
 				}
 				else											//それ以外（爆弾）の場合
 				{
