@@ -29,7 +29,7 @@ void Result::Draw()
 
 
 	SetFontSize(65);
-	DrawFormatString(508, D_SCREEN_HEIGHT / 5, 0xffffff, "りざると",0x000000);
+	//DrawFormatString(508, D_SCREEN_HEIGHT / 5, 0xffffff, "りざると",0x000000);
 
 	DrawRotaGraph(350, 350, 0.3, 0, enemyImg, TRUE);
 	DrawString(470, 350, "を切った数", 0xffffff, 0xffffff);
@@ -38,4 +38,8 @@ void Result::Draw()
 	DrawString(270, 550, "スコア", 0xffffff, 0x000000);
 	DrawFormatString(980, 550, 0xffffff, "%d", r_score);
 
+	DrawString(400, 630, "A:進む", 0xffffff);
+
+
+	SetFontSize(16);
 }

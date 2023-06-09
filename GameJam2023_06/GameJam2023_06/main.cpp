@@ -8,6 +8,7 @@
 #include "Title.h"
 #include "End.h"
 #include"System/PadInput/PadInput.h"
+#include "InputRanking.h"
 
 
 #include "Ranking.h"

@@ -46,8 +46,10 @@ void ResultScene::Draw()const
 	DrawString(470, 350, "を切った数", 0, 0xffffff);
 	DrawFormatString(840, 350, 0, "%d", killCount);
 
-	DrawString(270, 550, "スコア", 0, 0x000000);
-	DrawFormatString(840, 550, 0, "%d", score);
+	DrawString(270, 480, "スコア", 0, 0x000000);
+	DrawFormatString(840, 480, 0, "%d", score);
+
+	DrawString(530, 580, "A:進む", 0x000000);
 
 	SetFontSize(16);
 }

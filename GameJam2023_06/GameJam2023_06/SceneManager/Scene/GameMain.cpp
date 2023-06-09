@@ -8,7 +8,7 @@
 #include "../../System/KeyManager/KeyManager.h"
 
 //int sceneCHG = false;
-#define TIME_LIMIT 300
+#define TIME_LIMIT 200
 #define MOVE_SPEED 15
 
 /*
@@ -67,7 +67,7 @@ AbstractScene* GameMain::Update()
 			if (mScene == nullptr)
 			{
 				delete mScene;
-				return new Ranking();
+				return new Ranking(score);
 			}
 			return this;
 		}
@@ -89,8 +89,8 @@ AbstractScene* GameMain::Update()
 		if (CutInTime-- <= 0) {
 			CutInFlg = FALSE;
 		}
-		if (++MoveString >= 240) {
-			MoveString = 240;
+		if (++MoveString >= 140) {
+			MoveString = 140;
 		}
 	}
 
@@ -121,7 +121,7 @@ void GameMain::Draw()const
 	if (CutInFlg == TRUE)
 	{
 		int ret = DrawStringToHandle(1200 - MoveString * MOVE_SPEED, 250, "‚æ‚§‚¢", 0xffffff, CutInFont);
-		DrawStringToHandle(7620 - MoveString * (MOVE_SPEED + 15) , 250, "‚·‚½‚Ÿ‚Æ", 0xff0000, CutInFont);
+		DrawStringToHandle (4610 - MoveString * (MOVE_SPEED + 15) , 250, "‚·‚½‚Ÿ‚Æ", 0xff0000, CutInFont);
 
 	}
 

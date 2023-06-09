@@ -21,7 +21,7 @@ public:
 
 
 private:
-    static string name;
+    string name;
     char* pName;
     static const char charSet[D_CHARACTER_MAX];
 

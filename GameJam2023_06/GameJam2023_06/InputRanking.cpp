@@ -3,8 +3,6 @@
 #include "Ranking.h"
 #include "System/SoundPlayer/SoundPlayer.h"
 
-string InputRanking::name = string();
-
 const char InputRanking::charSet[D_CHARACTER_MAX] =
 {
 	'a','b','c','d','e','f','g','h','i',
@@ -77,7 +75,7 @@ AbstractScene* InputRanking::Update()
 	{
 		SoundPlayer::PlaySE(seCursorMove, false);
 		cursor += D_COL;
-		if ((D_COL - 1) * D_ROW < cursor)
+		if (D_CHARACTER_MAX - 1 < cursor)
 		{
 			cursor = cursor % D_COL;
 		}
@@ -157,6 +155,10 @@ void InputRanking::Draw()const
 		(140 + 100) + 20 + (80 * (cursor % D_COL)),
 		310 + 10 + (85 * (cursor / D_COL))
 		,imageCircle, TRUE);
+
+	SetFontSize(64);
+
+	DrawString(200, 630, "A:“ü—Í B:ˆê‚Â–ß‚é START:Œˆ’è", 0xffffff);
 }
 
 /*
