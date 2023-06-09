@@ -17,9 +17,8 @@ Bomb::Bomb(Location location, float radius, float speed, int score)
 	if (bakuhatu_Img == 0)
 	{
 		bakuhatu_Img = LoadGraph("Images/bakuhatsu.png");
-		bakuhatu_Flg = FALSE;
 	}
-	
+	bakuhatu_Flg = FALSE;
 }
 
 /*
@@ -39,7 +38,7 @@ void Bomb::Update()
 
 		if (isShow == FALSE)
 		{
-			bakuhatu_Flg == TRUE;
+			bakuhatu_Flg = TRUE;
 		}
 }
 
