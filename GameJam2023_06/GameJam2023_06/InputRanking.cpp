@@ -44,15 +44,16 @@ AbstractScene* InputRanking::Update()
 
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 	{
-		if (name.size() >= NAME_MAX-1)
+		if (name.size() >= NAME_MAX - 1)
 		{
 			name.erase(name.end() - 1);
 		}
 		name = name + charSet[cursor];
 		SoundPlayer::PlaySE(seCursorEnter, false);
 	}
-	
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
+
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B) ||
+		name.size() == 0)
 	{
 		name.erase(name.end() - 1);
 	}
