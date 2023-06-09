@@ -44,10 +44,11 @@ private:
 	bool sceneCHG;//シーン変更地
 	int Cursor_Cancel;
 	int newScore;
-	string* newName;
+	string newName;
 	
 };
 
 //プロトタイプ宣言
 int ReadRanking(RankingData Ranking[]);
 void SortRanking(RankingData Ranking[]);
+int SaveRanking(RankingData Ranking[]);

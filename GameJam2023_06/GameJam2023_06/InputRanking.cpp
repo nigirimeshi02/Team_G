@@ -3,6 +3,8 @@
 #include "Ranking.h"
 #include "System/SoundPlayer/SoundPlayer.h"
 
+string InputRanking::name = string();
+
 const char InputRanking::charSet[D_CHARACTER_MAX] =
 {
 	'a','b','c','d','e','f','g','h','i',
@@ -13,7 +15,7 @@ const char InputRanking::charSet[D_CHARACTER_MAX] =
 /*
 * コンストラクタ
 */
-InputRanking::InputRanking(string* name)
+InputRanking::InputRanking(char t[])
 {
 	seCursorMove = SoundPlayer::GetSE("Cursor_Move");
 	seCursorEnter = SoundPlayer::GetSE("Cursor_Enter");
@@ -21,7 +23,7 @@ InputRanking::InputRanking(string* name)
 	imageCircle = LoadGraph("images/circle.png");//100 * 100
 	cursor = 0;
 	interval = 0;
-	this->name = name;
+	pName = t;
 }
 
 /*
@@ -44,9 +46,9 @@ AbstractScene* InputRanking::Update()
 
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 	{
-		if (name->size() >= NAME_MAX-1)
+		if (name.size() >= NAME_MAX-1)
 		{
-			name->erase(name->end() - 1);
+			name.erase(name.end() - 1);
 		}
 		name = name + charSet[cursor];
 		SoundPlayer::PlaySE(seCursorEnter, false);
@@ -54,7 +56,7 @@ AbstractScene* InputRanking::Update()
 	
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
 	{
-		name->erase(name->end() - 1);
+		name.erase(name.end() - 1);
 	}
 
 	if ( InputUp() && interval >= D_INTERVAL)
@@ -111,8 +113,9 @@ AbstractScene* InputRanking::Update()
 	}
 
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_START) &&
-		name->size() > 0)
+		name.size() > 0)
 	{
+		sprintf_s(pName, 10, name.c_str());
 		return nullptr;
 	}
 
@@ -145,7 +148,7 @@ void InputRanking::Draw()const
 	}
 
 	DrawFormatString((140 + 100) + 50, (10 + 100) + 30,
-		0, "%s", name->c_str());
+		0, "%s", name.c_str());
 
 
 	SetFontSize(16);

@@ -30,17 +30,18 @@ Ranking::Ranking(int score)
 	SortRanking(work);
 	Cursor_Cancel = SoundPlayer::GetSE("Cursor_Cancel");
 	newScore = score;
-	newName = 0;
+	newName = string();
+	mScene = nullptr;
 	if (work[4].score < score)
 	{
 		work[4].score = score;
-		mScene = new InputRanking(newName);
+		mScene = new InputRanking((work[4].name));
 	}
 }
 //デストラクタ
 Ranking::~Ranking()
 {
-
+	
 }
 
 AbstractScene* Ranking::Update()
@@ -51,8 +52,16 @@ AbstractScene* Ranking::Update()
 		if (mScene == nullptr)
 		{
 			delete mScene;
+			mScene = nullptr;
+
+			SortRanking(work);
+			SaveRanking(work);
 		}
-		sprintf_s(work[4].name, 10, newName->c_str());
+		else
+		{
+			return this;
+		}
+		//sprintf_s(work[4].name, 10, newName.c_str());
 	}
 
 
@@ -74,6 +83,11 @@ void Ranking::Draw()const
 		DrawFormatString(260, 180 + i * 85, 0x8b0000, "%2d %-10s %10d", work[i].no, work[i].name, work[i].score);
 	}
 	DrawString(350, 620, "Aボタンでタイトルへ",0x8b0000, 0);
+
+	if (mScene != nullptr)
+	{
+		mScene->Draw();
+	}
 }
 
 /***********************************************

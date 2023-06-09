@@ -9,6 +9,8 @@
 #include "End.h"
 #include"System/PadInput/PadInput.h"
 
+
+#include "Ranking.h"
 /***********************************************
  * プログラムの開始
  ***********************************************/
@@ -32,7 +34,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SoundPlayer::GetInstance();										//サウンドプレイヤーの起動
 
 
-	AbstractScene* firstScene = new GameMain();						//FirstSceneの作成
+	AbstractScene* firstScene = new Title();						//FirstSceneの作成
 
 	SceneManager* sceneManager = SceneManager::Create(firstScene);	//シーンマネージャーの起動
 

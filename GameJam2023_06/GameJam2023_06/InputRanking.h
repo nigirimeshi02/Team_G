@@ -14,14 +14,15 @@ class InputRanking :
     public AbstractScene
 {
 public:
-    InputRanking(string* name = 0);
+    InputRanking(char t[]);
     ~InputRanking();
     AbstractScene* Update();
     void Draw()const;
 
 
 private:
-    string* name;
+    static string name;
+    char* pName;
     static const char charSet[D_CHARACTER_MAX];
 
     int imageBack;
