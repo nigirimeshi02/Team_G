@@ -29,6 +29,10 @@ private:
 	int boomSE;
 	int eatSE;
 	int imageBack;
+	int CutInFont;
+	bool CutInFlg;
+	int CutInTime;
+	int MoveString;
 
 	int score;
 	int killCount;

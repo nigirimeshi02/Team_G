@@ -11,6 +11,10 @@ Player::Player()
 	location.y = 550;
 	speed = 0;
 	imageCnt = 0;
+	Cnt = 0;
+	CntWait = 0;
+	SlashFlg = FALSE;
+	Slashtime = 0;
 	life = 3;
 	JoyPadX = 128;
 	atkFlg = FALSE;
@@ -92,17 +96,6 @@ void Player::Update()
 		}
 	}
 
-	/*if (speed >= WALK_SPEED)
-	{
-		if (++CntWait >= 6) {
-			Cnt++;
-			CntWait = 0;
-			if (Cnt >= 7) {
-				Cnt = 0;
-			}
-		}
-	}*/
-
 	else if (JoyPadX <= MARGIN && -MARGIN <= JoyPadX) {
 		if (PlayerLimit() == 0) {
 			speed = 0;
@@ -110,7 +103,7 @@ void Player::Update()
 		}
 	}
 
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) &&
+    if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) &&
 		attack == nullptr)
 	{
 		SoundPlayer::PlaySE(Attack_SE, FALSE);
@@ -174,7 +167,7 @@ void Player::DrawPlayer()const
 	}
 	
 	if (SlashFlg == TRUE) {
-		DrawGraph(location.x - 48, location.y - 48, SlashImage, TRUE);
+		DrawGraph((int)location.x - 48, (int)location.y - 48, SlashImage, TRUE);
 	}
 }
 

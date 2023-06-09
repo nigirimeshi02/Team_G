@@ -8,6 +8,9 @@
 #include "../../System/KeyManager/KeyManager.h"
 
 //int sceneCHG = false;
+#define TIME_LIMIT 300
+#define MOVE_SPEED 15
+
 /*
 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
 */
@@ -27,6 +30,11 @@ GameMain::GameMain()
 	eatSE = SoundPlayer::GetSE("eat");
 	imageBack = LoadGraph("images/main.png");
 	SoundPlayer::PlayBGM(gameMainBGM);
+
+	CutInFont = CreateFontToHandle("HGs‘‘Ì", 90, 8, DX_FONTTYPE_ANTIALIASING);
+	CutInFlg = TRUE;
+	CutInTime = TIME_LIMIT;
+	MoveString = 0;
 
 	score = 0;
 	killCount = 0;
@@ -51,30 +59,43 @@ GameMain::~GameMain()
 */
 AbstractScene* GameMain::Update()
 {
-	if (mScene != nullptr)
+	if (CutInFlg == FALSE)
 	{
-		mScene = mScene->Update();
-		if (mScene == nullptr)
+		if (mScene != nullptr)
 		{
-			delete mScene;
-			return new Ranking();
+			mScene = mScene->Update();
+			if (mScene == nullptr)
+			{
+				delete mScene;
+				return new Ranking();
+			}
+			return this;
 		}
-		return this;
-	}
 
-	if (isGameEnd)
-	{
-		frameCount--;
-		if (frameCount <= 0)
+		if (isGameEnd)
 		{
-			mScene = new ResultScene(score, killCount, *(obstacleManager->GetCount()),eatCount);
+			frameCount--;
+			if (frameCount <= 0)
+			{
+				mScene = new ResultScene(score, killCount, *(obstacleManager->GetCount()), eatCount);
+			}
+			return this;		//ˆÈ~‚Ìˆ—‚ðŽ~‚ß‚é
 		}
-		return this;		//ˆÈ~‚Ìˆ—‚ðŽ~‚ß‚é
+		obstacleManager->Update();
+		CheckHit();
+	}
+	else
+	{
+		if (CutInTime-- <= 0) {
+			CutInFlg = FALSE;
+		}
+		if (++MoveString >= 240) {
+			MoveString = 240;
+		}
 	}
 
 	player->Update();
-	obstacleManager->Update();
-	CheckHit();
+
 
 	if (*(player->GetLife()) == 0)
 	{
@@ -96,6 +117,13 @@ void GameMain::Draw()const
 	player->DrawPlayer();
 
 	ui->Draw();
+
+	if (CutInFlg == TRUE)
+	{
+		int ret = DrawStringToHandle(1200 - MoveString * MOVE_SPEED, 250, "‚æ‚§‚¢", 0xffffff, CutInFont);
+		DrawStringToHandle(7610 - MoveString * (MOVE_SPEED + 15) , 250, "‚·‚½‚Ÿ‚Æ", 0xff0000, CutInFont);
+
+	}
 
 	if (mScene != nullptr)
 	{
