@@ -13,6 +13,8 @@ class Player:
 private:
 	int imageCnt;			//０は静止　１は左　２は右
 	float speed;			//移動量
+	int CntWait;
+	int Cnt;
 	int life;				//残機
 	short JoyPadX;			//コントローラーの左スティックの値を格納
 	bool atkFlg;			//攻撃中かどうか	FALSE:攻撃していない	TRUE:攻撃中
@@ -24,8 +26,8 @@ private:
 	int Slashtime;
 
 	int PlayerImage;		//プレイヤーの止まっている画像
-	int PlayerLeftRunImage;	//プレイヤーの左へ移動している画像
-	int PlayerRightRunImage;//プレイヤーの右へ移動している画像
+	int PlayerLeftRunImage[8];	//プレイヤーの左へ移動している画像
+	int PlayerRightRunImage[8];//プレイヤーの右へ移動している画像
 	int SlashImage;
 
 	int Damege_SE;
