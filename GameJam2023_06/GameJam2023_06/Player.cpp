@@ -8,7 +8,7 @@
 Player::Player()
 {
 	location.x = 600;
-	location.y = 500;
+	location.y = 550;
 	speed = 0;
 	imageCnt = 0;
 	life = 3;
@@ -20,9 +20,9 @@ Player::Player()
 	blinkFlg = FALSE;
 
 	SlashImage = LoadGraph("images/slash.png");
-	PlayerImage = LoadGraph("images/player.png");
-	PlayerLeftRunImage = LoadGraph("images/player_left_run.png");
-	PlayerRightRunImage = LoadGraph("images/player_right_run.png");
+	PlayerImage = LoadGraph("images/Player_Stand.png");
+	LoadDivGraph("Images/Player_Left_Walk.png", 8, 8, 1, 80, 120, PlayerLeftRunImage);
+	LoadDivGraph("Images/Player_Right_Walk.png", 8, 8, 1, 80, 120, PlayerRightRunImage);
 	Damege_SE = SoundPlayer::GetSE("damege");
 	Attack_SE = SoundPlayer::GetSE("Attack");
 
@@ -57,6 +57,13 @@ void Player::Update()
 			}
 			else {
 				speed = WALK_SPEED * -1;
+				if (++CntWait >= 6) {
+					Cnt++;
+					CntWait = 0;
+					if (Cnt >= 7) {
+						Cnt = 0;
+					}
+				}
 			}
 
 		}
@@ -74,9 +81,27 @@ void Player::Update()
 			}
 			else {
 				speed = WALK_SPEED;
+				if (++CntWait >= 6) {
+					Cnt++;
+					CntWait = 0;
+					if (Cnt >= 7) {
+						Cnt = 0;
+					}
+				}
 			}
 		}
 	}
+
+	/*if (speed >= WALK_SPEED)
+	{
+		if (++CntWait >= 6) {
+			Cnt++;
+			CntWait = 0;
+			if (Cnt >= 7) {
+				Cnt = 0;
+			}
+		}
+	}*/
 
 	else if (JoyPadX <= MARGIN && -MARGIN <= JoyPadX) {
 		if (PlayerLimit() == 0) {
@@ -129,17 +154,17 @@ void Player::DrawPlayer()const
 	//DrawFormatString(0, 0, 0xffffff, "%d", JoyPadX);
 	if (imageCnt == 0) {
 		if (speed == 0 && blinkFlg == FALSE) {
-			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerImage, TRUE);
+			DrawRotaGraphF(location.x, location.y, 1.3, 0, PlayerImage, TRUE);
 		}
 	}
 	if (imageCnt == 1) {
 		if (speed > -6 && blinkFlg == FALSE) {
-			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerLeftRunImage, TRUE);
+			DrawRotaGraphF(location.x, location.y, 1.3, 0, PlayerLeftRunImage[Cnt], TRUE);
 		}
 	}
 	if (imageCnt == 2) {
 		if (speed < 6 && blinkFlg == FALSE) {
-			DrawRotaGraphF(location.x, location.y, 0.3, 0, PlayerRightRunImage, TRUE);
+			DrawRotaGraphF(location.x, location.y, 1.3, 0, PlayerRightRunImage[Cnt], TRUE);
 		}
 	}
 

@@ -226,5 +226,8 @@
     <Image Include="Images\bakuhatsu.png">
       <Filter>リソース ファイル</Filter>
     </Image>
+    <Image Include="..\..\..\..\..\..\Downloads\Player_walk\Player_Walk01.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
   </ItemGroup>
 </Project>
