@@ -22,7 +22,6 @@ public:
 protected:
 	float speed;		//移動速度
 	bool isBroken;		//壊れたかどうか
-	bool isShow;		//映す映さない
 	int score;			//スコア
 
 	int frameCount;		//アニメーション用カウンタ
