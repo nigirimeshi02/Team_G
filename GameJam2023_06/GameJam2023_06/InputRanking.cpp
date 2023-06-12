@@ -52,8 +52,8 @@ AbstractScene* InputRanking::Update()
 		SoundPlayer::PlaySE(seCursorEnter, false);
 	}
 
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B) ||
-		name.size() == 0)
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B) &&
+		name.size() > 0)
 	{
 		name.erase(name.end() - 1);
 	}

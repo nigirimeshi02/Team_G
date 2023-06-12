@@ -15,6 +15,6 @@ public:
 	void Update();
 	void Draw()const;
 
-	int GetScore()const override { return score * (int)isShow; }
+	int GetScore()const override { return score * (int)!isBroken; }
 };
 

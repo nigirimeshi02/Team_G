@@ -7,8 +7,10 @@
 ObstacleManager::ObstacleManager()
 {
 	frameCount = 0;
-	unavailableLane[0] = GetRand(GetRand(D_LANE_MAX - 1));
-	unavailableLane[1] = GetRand(GetRand(D_LANE_MAX - 1));
+	for (int i : unavailableLane)
+	{
+		i = 0;
+	}
 	avoidCount = 0;
 	OBJECT_MAX = 1;
 }
@@ -56,10 +58,7 @@ void ObstacleManager::Draw()const
 {
 	for (ObstacleBase* obstacle : obstacles)
 	{
-		if (obstacle->GetIsShow())
-		{
-			obstacle->Draw();
-		}
+		obstacle->Draw();
 	}
 }
 
@@ -133,14 +132,30 @@ void ObstacleManager::CreateFood()
 */
 float ObstacleManager::LotteryLane()
 {
-	int rand = GetRand(D_LANE_MAX - 1);
-	while (unavailableLane[0] == rand || unavailableLane[1] == rand)
+	bool isCovered = true;
+	int rand;
+	while (isCovered)
 	{
 		rand = GetRand(D_LANE_MAX - 1);
+		for (int lane : unavailableLane)
+		{
+			if (lane == rand)
+			{
+				isCovered = true;
+				break;
+			}
+			else
+			{
+				isCovered = false;
+			}
+		}
 	}
 
-	unavailableLane[1] = unavailableLane[0];
-	unavailableLane[0] = rand;
+	for (int i = 0; i < 6; i++)
+	{
+		unavailableLane[i] = unavailableLane[i + 1];
+	}
+	unavailableLane[6] = rand;
 
 	return  (float)(rand * D_LANE_WIDTH) + (D_LANE_WIDTH / 2);
 }
@@ -154,7 +169,7 @@ void ObstacleManager::DeleteObstacles()
 {
 	for (int i = 0; i < obstacles.size(); i++)
 	{
-		if (obstacles[i]->GetIsShow() == false)
+		if (obstacles[i]->IsAbleDelete() == true)
 		{
 			delete obstacles[i];
 			obstacles.erase(obstacles.begin() + i);

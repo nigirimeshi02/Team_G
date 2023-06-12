@@ -32,7 +32,7 @@ private:
 	int OBJECT_MAX;
 	vector<ObstacleBase*> obstacles;
 	int frameCount;
-	int unavailableLane[2];
+	int unavailableLane[7];
 	int avoidCount;
 
 public:
