@@ -5,7 +5,7 @@ class Enemy :
     public ObstacleBase
 {
 public:
-    Enemy(Location location = { 100,0 }, float radius = 10.0f, float speed = 2, int score = 200);
+    Enemy(Location location = { 100,0 }, float radius = 10.0f, float speed = 2, int score = 1000);
     ~Enemy();
      
     

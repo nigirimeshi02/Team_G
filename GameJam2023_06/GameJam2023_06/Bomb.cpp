@@ -36,7 +36,7 @@ void Bomb::Update()
 {
 		location.y += speed;
 
-		if (isShow == FALSE)
+		if (isBroken == true)
 		{
 			bakuhatu_Flg = TRUE;
 		}

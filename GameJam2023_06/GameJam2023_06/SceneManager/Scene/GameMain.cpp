@@ -129,6 +129,8 @@ void GameMain::Draw()const
 	{
 		mScene->Draw();
 	}
+
+	DrawFormatString(0, 0, 0xFF0000, "%d", score, 12);
 }
 
 /*
@@ -147,25 +149,27 @@ void GameMain::CheckHit()
 
 		// プレイヤーの攻撃との当たり判定
 		if (attack != nullptr &&		//プレイヤーが攻撃しているか？
-			obstacle->GetIsShow() &&	//対象のものが見えている(当たり判定を取る状態)か？
+			obstacle->GetIsBroken() == false &&	//対象のものが壊れていない(当たり判定を取る状態)か？
 			attack->HitCheck(obstacle))	//当たっているか？
 		{
-			obstacle->ToggleIsShow();		//見えなくする 
-			// TODO:↑余裕があれば壊れる動き付けるため、ToggleIsBrokenにする
+			obstacle->ToggleIsBroken();		//壊す
+			obstacle->SetFrameCount();		//アニメーション用のフレーム数を設定する
 			score += obstacle->GetScore();	//スコア加算
+
 			if (dynamic_cast<Bomb*>(obstacle) != nullptr)
-			{
+			{	//	斬ったのがボムならダメージを受ける
 				SoundPlayer::PlaySE(boomSE, FALSE);
 				player->HitDamage();
 			}
+
 			if (dynamic_cast<Enemy*>(obstacle) != nullptr)
-			{
+			{	//	斬ったのがエネミーならキルカウントする
 				killCount++;
 			}
 		}
 		
 		// プレイヤー本体との当たり判定
-		if (obstacle->GetIsShow() &&					//対象のものが見えている(当たり判定を取る状態)か？
+		if (obstacle->GetIsBroken() == false &&					//対象のものが見えている(当たり判定を取る状態)か？
 			player->HitCheck(obstacle))					//当たっているか
 		{
 			if (dynamic_cast<Food*>(obstacle) != nullptr)	//食べ物か？
@@ -173,7 +177,7 @@ void GameMain::CheckHit()
 				SoundPlayer::PlaySE(eatSE, FALSE);
 				eatCount++;
 				score += obstacle->GetScore();
-				obstacle->ToggleIsShow();
+				obstacle->ToggleIsBroken();
 			}
 			else if (player->GetIsInvincible() != true)
 			{
@@ -189,7 +193,8 @@ void GameMain::CheckHit()
 					{
 						SoundPlayer::PlaySE(boomSE, FALSE);
 						score += obstacle->GetScore();
-						obstacle->ToggleIsShow();					//消す
+						obstacle->ToggleIsBroken();				//消す
+						obstacle->SetFrameCount();				//アニメーション用のフレーム数を設定する
 					}
 				}
 
