@@ -117,6 +117,9 @@
     <ClCompile Include="SceneManager\Scene\ResultScene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="InputRanking.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -206,6 +209,12 @@
     <ClInclude Include="SceneManager\Scene\ResultScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="InputRanking.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\cursor.png">
@@ -226,8 +235,10 @@
     <Image Include="Images\bakuhatsu.png">
       <Filter>リソース ファイル</Filter>
     </Image>
-    <Image Include="..\..\..\..\..\..\Downloads\Player_walk\Player_Walk01.png">
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameJam2023_06.rc">
       <Filter>リソース ファイル</Filter>
-    </Image>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
