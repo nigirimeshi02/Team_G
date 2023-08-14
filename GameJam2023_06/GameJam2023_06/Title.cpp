@@ -6,7 +6,6 @@
 #include"System/PadInput/PadInput.h"
 #include"System/SoundPlayer/SoundPlayer.h"
 #include "System/KeyManager/KeyManager.h"
-#include "SceneManager/Scene/GameMain.h"
 #include"End.h"
 
 Title::Title()
