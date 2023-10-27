@@ -46,8 +46,8 @@ AbstractScene* Title::Update()
 	if (select == 1) Menu_Number = TITLE_MENU::RANKING;
 	if (select == 2) Menu_Number = TITLE_MENU::END;
 
-	if (select < 0)select = 2;
-	if (select > 2)select = 0;
+	/*if (select < 0)select = 2;
+	if (select > 2)select = 0;*/
 
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && interval >= 30) {
 		
